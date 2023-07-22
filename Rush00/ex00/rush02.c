@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Rush04.c                                           :+:      :+:    :+:   */
+/*   rush04.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <jaemikim@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: seungsyu <seungsyu@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 14:21:20 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/07/22 14:57:40 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/07/22 15:05:59 by seungsyu          #+#    #+#             */
+/*   Updated: 2023/07/22 16:43:54 by kyumkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	top(int x)
 		if (i == 0)
 			ft_putchar('A');
 		else if (i == x - 1)
-			ft_putchar('C');
+			ft_putchar('A');
 		else
 			ft_putchar('B');
 		i++;
@@ -53,7 +53,7 @@ void	bot(int x)
 		if (i == 0)
 			ft_putchar('C');
 		else if (i == x - 1)
-			ft_putchar('A');
+			ft_putchar('C');
 		else
 			ft_putchar('B');
 		i++;
