@@ -6,7 +6,7 @@
 /*   By: jaemikim <jaemikim@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 18:09:23 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/07/22 23:25:16 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/07/23 13:04:34 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ void	downside(int n, int d, int f, char *buf)
 		f++;
 	}
 }
-
+/*
 int	main(void)
 {
 	ft_print_combn(9);
 }
+*/

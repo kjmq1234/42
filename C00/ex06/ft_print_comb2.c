@@ -6,13 +6,13 @@
 /*   By: jaemikim <jaemikim@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 17:42:12 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/07/20 18:17:34 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/07/23 13:26:32 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print(int first, int second)
+void	print_two(int first, int second)
 {
 	char	fir_buf[2];
 	char	sec_buf[2];
@@ -40,7 +40,7 @@ void	ft_print_comb2(void)
 	second = 0;
 	while (first != 100)
 	{
-		print(first, second);
+		print_two(first, second);
 		second++;
 		if (second == 100)
 		{
