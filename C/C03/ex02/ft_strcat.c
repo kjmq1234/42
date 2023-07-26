@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <jaemikim@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 14:03:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/07/20 16:21:42 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/07/24 18:17:05 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/07/25 14:25:18 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<unistd.h>
 
-void	ft_print_alphabet(void)
+#include <unistd.h>
+
+char	*ft_strcat(char *dest, char *src)
 {
-	char	a;
+	int	i;
+	int	j;
 
-	a = 'a';
-	while (a <= 'z' )
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
 	{
-		write(1, &a, 1);
-		a++;
+		i++;
 	}
+	while (src[j] != '\0')
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
-/*
-int	main(void)
-{
-	ft_print_alphabet();
-}
-*/

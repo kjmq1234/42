@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <jaemikim@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 14:13:33 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/07/23 15:57:48 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/07/24 16:56:10 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/07/25 13:55:37 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_print_numbers(void)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	char	a;
+	unsigned int	i;
 
-	a = '0';
-	while (a <= '9' )
+	i = 0;
+	while ((i != n) && ((*s1 != '\0') || (*s2 != '\0')))
 	{
-		write(1, &a, 1);
-		a++;
+		if ((unsigned char) *s1 > (unsigned char) *s2)
+			return ((unsigned char) *s1 - (unsigned char) *s2);
+		else if ((unsigned char) *s1 < (unsigned char) *s2)
+			return ((unsigned char) *s1 - (unsigned char) *s2);
+		s1++;
+		s2++;
+		i++;
 	}
+	return (0);
 }
-/*
-int	main(void)
-{
-	ft_print_numbers();
-}
-*/
