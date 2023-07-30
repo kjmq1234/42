@@ -6,57 +6,78 @@
 /*   By: jaemikim <jaemikim@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:42:00 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/07/29 14:41:34 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/07/30 14:39:55 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_error_printer(void);
+int	ft_error_free(int *ptr);
 int	skyscraper_main(int n, int *arr);
+int	ft_free(int *ptr);
 
 int	word_count(char *str)
 {
-	int	i;
+	int	tab_count;
+	int	num_count;
 
-	i = 0;
+	tab_count = 0;
+	num_count = 0;
 	while (*str)
 	{
 		if (*str == 32)
-			i++;
+			tab_count++;
+		else if (*str >= '0' && *str <= '9')
+			num_count++;
+		else
+			return (0);
 		str++;
 	}
-	if ((i + 1) % 4 == 0)
-		return (i + 1);
+	if ((tab_count + 1) % 4 == 0 && num_count - tab_count == 1)
+		return (num_count);
 	else
 		return (0);
 }
 
-int	main(int argc, char **argv)
+int	check_active(char **argv, int wcnt, int *arr)
 {
-	int	argv_index;
-	int	arr_index;
-	int	*arr;
+	int	argv_i;
+	int	arr_i;
 
-	arr = (int *) malloc(sizeof(int) * word_count(argv[1]));
-	argv_index = 0;
-	arr_index = 0;
-	if ((argc != 2) || (word_count(argv[1]) == 0))
-		return (ft_error_printer());
-	while (arr_index < word_count(argv[1]))
+	argv_i = 0;
+	arr_i = 0;
+	while (arr_i < wcnt)
 	{
-		if ((argv[1][argv_index] >= '0') && (argv[1][arr_index] <= '9'))
-			arr[arr_index++] = argv[1][argv_index++] - '0';
+		if ((argv[1][argv_i] >= '1') && ((argv[1][arr_i] <= wcnt / 4) + '0'))
+			arr[arr_i++] = argv[1][argv_i++] - '0';
 		else
-			return (ft_error_printer());
-		if (argv[1][argv_index] == 32)
-			argv_index++;
-		else if (arr_index == word_count(argv[1]))
+			return (0);
+		if (argv[1][argv_i] == 32)
+			argv_i++;
+		else if (arr_i == wcnt)
 			break ;
 		else
-			return (ft_error_printer());
+			return (0);
 	}
-	skyscraper_main(word_count(argv[1]) / 4, arr);
+	return (1);
+}
+
+int	main(int argc, char **argv)
+{
+	int	*arr;
+	int	wcnt;
+
+	wcnt = word_count(argv[1]);
+	if ((argc != 2) || (wcnt == 0))
+		return (ft_error_printer());
+	arr = (int *) malloc(sizeof(int) * wcnt);
+	if (!arr)
+		return (ft_error_printer());
+	if (!check_active(argv, wcnt, arr))
+		ft_error_printer();
+	else
+		skyscraper_main(wcnt / 4, arr);
+	ft_free(arr);
 }

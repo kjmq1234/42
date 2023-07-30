@@ -6,11 +6,14 @@
 /*   By: yejyoon <yejielin0823@student.42se>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 14:30:50 by yejyoon           #+#    #+#             */
-/*   Updated: 2023/07/29 14:32:49 by yejyoon          ###   ########.fr       */
+/*   Updated: 2023/07/30 14:41:22 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
+
+void	ft_free(int *ptr);
 
 void	n_by_n_printer(int n, int *arr)
 {
@@ -32,9 +35,8 @@ void	n_by_n_printer(int n, int *arr)
 
 int	ft_error_printer(void)
 {
-	char	*error;
+	const char	*error = "Error";
 
-	error = "Error";
 	while (*error != 0)
 	{
 		write(1, error, 1);
@@ -42,4 +44,23 @@ int	ft_error_printer(void)
 	}
 	write(1, "\n", 1);
 	return (0);
+}
+
+int	*ft_error_malloc(void)
+{
+	const char	*error = "Error";
+
+	while (*error != 0)
+	{
+		write(1, error, 1);
+		error++;
+	}
+	write(1, "\n", 1);
+	return (0);
+}
+
+int	ft_error_free(int *ptr)
+{
+	ft_free(ptr);
+	return (ft_error_printer());
 }

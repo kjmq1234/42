@@ -6,12 +6,11 @@
 /*   By: minjacho <minjacho@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:42:29 by minjacho          #+#    #+#             */
-/*   Updated: 2023/07/29 14:44:49 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/07/30 12:17:00 by minjacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 void	n_by_n_printer(int n, int *arr);
 int		has_same_num_check(const int size, const int *arr);
@@ -38,10 +37,11 @@ int	sky_check(int idx, int *map, const int n, const int *cond)
 		has_same = 1;
 	if (has_same_num_check(idx / n + 1, c_arr))
 		has_same = 1;
-	if (!has_same && idx % n == n - 1)
+	if (!has_same)
+	{
 		r = h_check(n, r_arr, cond[idx / n + 2 * n], cond[idx / n + 3 * n]);
-	if (!has_same && idx >= n * (n - 1))
 		c = h_check(n, c_arr, cond[idx % n], cond[idx % n + n]);
+	}
 	ft_free(r_arr);
 	ft_free(c_arr);
 	return (!has_same && r && c);
@@ -58,15 +58,15 @@ int	recur_skyscraper(int i, int *map, const int n, const int *cond)
 		n_by_n_printer(n, map);
 		return (0);
 	}
-	height = 1;
-	while (height <= n)
+	height = n;
+	while (height >= 1)
 	{
 		map[i] = height;
 		if (sky_check(i, map, n, cond))
 			no_result *= recur_skyscraper(i + 1, map, n, cond);
 		if (!no_result)
 			return (no_result);
-		height++;
+		height--;
 	}
 	return (no_result);
 }
@@ -79,10 +79,7 @@ int	skyscraper_main(int n, int *arr)
 
 	map = (int *)malloc((n * n) * sizeof(int));
 	if (!map)
-	{
-		write(2, "ERROR : malloc error occured!\n", 30);
-		return (1);
-	}
+		ft_error_printer();
 	i = 0;
 	while (i < n * n)
 	{
@@ -91,6 +88,6 @@ int	skyscraper_main(int n, int *arr)
 	}
 	no_result = recur_skyscraper(0, map, n, arr);
 	if (no_result)
-		return(ft_error_printer());
+		return (ft_error_printer());
 	return (0);
 }
