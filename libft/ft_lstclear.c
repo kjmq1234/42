@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 02:16:53 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/11/03 00:13:19 by jam_min_2        ###   ########.fr       */
+/*   Created: 2023/11/02 23:58:28 by jam_min_2         #+#    #+#             */
+/*   Updated: 2023/11/02 23:58:49 by jam_min_2        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
-int	ft_strlen(const char *s);
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
 
-char	*ft_strdup(const char *s1)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	char	*str;
-	char	*tmp;
+	t_list	*ptr;
+	t_list	*nextptr;
 
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (!str)
-		return (NULL);
-	tmp = str;
-	while (*s1 != '\0')
+	if ((!lst) || (!del))
+		return ;
+	if (!*lst)
+		return ;
+	ptr = *lst;
+	while (ptr)
 	{
-		*str = *s1;
-		str++;
-		s1++;
+		nextptr = ptr->next;
+		ft_lstdelone(ptr, del);
+		ptr = nextptr;
 	}
-	*str = '\0';
-	return (tmp);
+	*lst = NULL;
 }

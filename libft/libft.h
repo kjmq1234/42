@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:37:37 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/31 22:07:33 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/03 00:14:19 by jam_min_2        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,15 @@ void			ft_putnbr_fd(int n, int fd);
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 int				ft_lstsize(t_list *lst);
+char			*ft_strtrim(char const *s1, char const *set);
+char			**ft_split(char const *s, char c);
+char			*ft_itoa(int n);
+t_list			*ft_lstlast(t_list *lst);
+void			ft_lstadd_back(t_list **lst, t_list *new);
+void			ft_lstiter(t_list *lst, void (*f)(void *));
+void			ft_lstclear(t_list **lst, void (*del)(void *));
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
+void (*del)(void *));
+void			ft_lstdelone(t_list *lst, void (*del)(void *));
+
 #endif

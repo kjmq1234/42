@@ -26,6 +26,9 @@ ft_memchr.c \
 ft_putstr_fd.c \
 ft_putendl_fd \
 ft_putnbr_fd.c \
+ft_strtrim.c \
+ft_split.c \
+ft_itoa.c
 
 
 OBJS = ft_isalnum.o ft_isalpha.o ft_isdigit.o ft_isascii.o ft_isprint.o \
@@ -43,19 +46,34 @@ ft_putchar_fd.o \
 ft_putstr_fd.o \
 ft_putendl_fd.o \
 ft_putnbr_fd.o \
+ft_strtrim.o \
+ft_split.o \
+ft_itoa.o
 
 BONUSSRCS = ft_lstnew.c \
 ft_lstadd_front.c \
 ft_lstsize.c \
+ft_lstlast.c \
+ft_lstadd_back.c \
+ft_lstdelone.c \
+ft_lstclear.c \
+ft_lstiter.c \
+ft_lstmap.o
 
 BONUSOBJS = ft_lstnew.o \
 ft_lstadd_front.o \
 ft_lstsize.o \
+ft_lstlast.o \
+ft_lstadd_back.o \
+ft_lstdelone.o \
+ft_lstclear.o \
+ft_lstiter.o \
+ft_lstmap.o
 
-INC = ./libft.h
+INC = ./
 
 CC = cc
-CFLAGS = -c -Wall -Wextra -Werror
+CFLAGS = -c
 RM = rm -rf
 
 all : $(NAME)

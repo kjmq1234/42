@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:49:21 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/31 21:58:05 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/02 23:59:59 by jam_min_2        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ t_list	*ft_lstnew(void *content)
 	if (!newlst)
 		return (0);
 	newlst->content = content;
-	newlst->next = 0;
+	newlst->next = NULL;
 	return (newlst);
 }
