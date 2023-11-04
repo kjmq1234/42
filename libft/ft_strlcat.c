@@ -6,13 +6,16 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 03:58:36 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/30 08:22:23 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:10:37 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+
 int				ft_strlen(const char *s);
 
-unsigned int	ft_strlcat(char *dst, const char *src, unsigned int dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+
 {
 	unsigned int	i;
 	unsigned int	dstlen;

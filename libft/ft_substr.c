@@ -6,17 +6,17 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:58:57 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/31 18:12:16 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:24:35 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 int				ft_strlen(const char *s);
-unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char			*ft_strdup(const char *s1);
 
-char	*ft_substr(char const *s, unsigned int start, unsigned int len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char				*str;
 	unsigned int		slen;

@@ -6,14 +6,16 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 22:56:26 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/29 23:26:36 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 18:20:53 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *b, int c, unsigned int len)
+#include <stdlib.h>
+
+void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned int	a;
-	void			*tmp;
+	size_t	a;
+	void	*tmp;
 
 	tmp = b;
 	a = 0;

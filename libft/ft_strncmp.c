@@ -6,11 +6,13 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 08:32:06 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/30 08:39:29 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:13:09 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
+#include <stdlib.h>
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	while (n > 0)
 	{

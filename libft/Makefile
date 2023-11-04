@@ -73,7 +73,7 @@ ft_lstmap.o
 INC = ./
 
 CC = cc
-CFLAGS = -c
+CFLAGS = -c -Wall -Wextra -Werror
 RM = rm -rf
 
 all : $(NAME)

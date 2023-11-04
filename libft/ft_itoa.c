@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:03:30 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/03 00:26:02 by jam_min_2        ###   ########.fr       */
+/*   Updated: 2023/11/04 17:55:54 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 char			*ft_strdup(const char *s1);
-unsigned int	numlen(int n);
+size_t			numlen(int n);
 void			into_buf(char *str, int n, int len);
 
 char	*ft_itoa(int n)
 {
 	char			*str;
-	unsigned int	len;
+	size_t			len;
 
 	len = numlen(n);
 	if (n == 0)
@@ -55,7 +55,7 @@ void	into_buf(char *str, int n, int len)
 	}
 }
 
-unsigned int	numlen(int n)
+size_t	numlen(int n)
 {
 	int	cnt;
 

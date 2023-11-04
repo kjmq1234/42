@@ -6,13 +6,15 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 23:35:56 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/29 23:49:15 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:57:47 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, unsigned int n)
+#include <stdlib.h>
+
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned int	a;
+	size_t	a;
 
 	a = 0;
 	while (a < n)

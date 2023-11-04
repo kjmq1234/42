@@ -6,15 +6,15 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 01:55:52 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/30 02:06:33 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:03:09 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	ft_bzero(void *s, unsigned int n);
+void	ft_bzero(void *s, size_t n);
 
-void	*ft_calloc(unsigned int count, unsigned int size)
+void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 

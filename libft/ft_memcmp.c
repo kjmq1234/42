@@ -6,11 +6,13 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:57:02 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/31 17:57:37 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 18:16:41 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_memcmp(const void *s1, const void *s2, unsigned int n)
+#include <stdlib.h>
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	while (n > 0)
 	{

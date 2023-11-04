@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:04:06 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/31 18:11:26 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:26:03 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int				ft_strlen(const char *s);
 int				ft_strlcat(char *dest, char *src, unsigned int size);
-unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char			*ft_strdup(const char *s1);
 
 char	*ft_strjoin(char const *s1, char const *s2)

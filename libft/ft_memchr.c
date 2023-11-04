@@ -6,11 +6,13 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:14:29 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/31 18:21:53 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:16:55 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, unsigned int n)
+#include <stdlib.h>
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	while (n > 0)
 	{

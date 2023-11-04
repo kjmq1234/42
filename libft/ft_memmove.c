@@ -6,11 +6,13 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:52:38 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/31 20:41:36 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 16:55:21 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memmove(void *dst, const void *src, unsigned int n)
+#include <stdlib.h>
+
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	unsigned char			*dststr;
 	unsigned const char		*srcstr;

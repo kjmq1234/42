@@ -6,11 +6,13 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 03:19:45 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/30 03:49:01 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:07:55 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize)
+#include <stdlib.h>
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	unsigned int	i;
 

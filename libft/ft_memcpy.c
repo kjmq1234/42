@@ -6,14 +6,16 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 00:02:58 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/31 17:51:09 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 18:18:32 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy(void *dst, const void *src, unsigned int n)
+#include <stdlib.h>
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned int	i;
-	void			*ptr;
+	size_t	i;
+	void	*ptr;
 
 	ptr = dst;
 	i = 0;

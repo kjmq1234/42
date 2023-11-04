@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:16:02 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/03 00:16:36 by jam_min_2        ###   ########.fr       */
+/*   Updated: 2023/11/04 17:26:11 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 int				isset(char s, char const *set);
-unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char			*ft_strdup(const char *s1);
 
 char	*ft_strtrim(char const *s1, char const *set)

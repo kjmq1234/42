@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:17:02 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/03 00:34:25 by jam_min_2        ###   ########.fr       */
+/*   Updated: 2023/11/04 18:23:35 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int				ft_strlen_c(const char *s, char c);
 int				wordcnt(char const *s, char c);
-unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void			strclear(char **s, unsigned int index);
 char const		*str_jump(const char *s, char c);
 
@@ -43,7 +43,7 @@ char	**ft_split(char const *s, char c)
 		else
 			s++;
 	}
-	str[i] = '\0';
+	str[i] = 0;
 	return (str);
 }
 
