@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:17:02 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/04 18:23:35 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/05 02:26:38 by jam_min_2        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int				ft_strlen_c(const char *s, char c);
+size_t			ft_strlen_c(const char *s, char c);
 int				wordcnt(char const *s, char c);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void			strclear(char **s, unsigned int index);
@@ -64,9 +64,9 @@ int	wordcnt(char const *s, char c)
 	return (cnt);
 }
 
-int	ft_strlen_c(const char *s, char c)
+size_t	ft_strlen_c(const char *s, char c)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while ((*s != '\0') && (*s != c))

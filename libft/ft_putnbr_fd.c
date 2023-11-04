@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:08:28 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/31 21:30:10 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/04 23:11:56 by jam_min_2        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int		numlen(int n);
 void	print_nbr(int n, int fd);
 
 void	ft_putnbr_fd(int n, int fd)

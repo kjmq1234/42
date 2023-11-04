@@ -6,13 +6,13 @@
 /*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 02:16:53 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/11/03 00:13:19 by jam_min_2        ###   ########.fr       */
+/*   Updated: 2023/11/04 23:26:36 by jam_min_2        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 
 char	*ft_strdup(const char *s1)
 {

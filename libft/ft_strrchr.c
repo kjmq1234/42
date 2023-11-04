@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 09:11:03 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/10/30 09:18:02 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/05 02:17:09 by jam_min_2        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(const char *s);
+#include <stdlib.h>
+
+size_t		ft_strlen(const char *s);
 
 char	*ft_strrchr(const char *s, int c)
 {
