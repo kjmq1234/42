@@ -12,7 +12,6 @@ int isleapyear(int year);
 void print_cal(int year, int month, t_day* days);
 int manu(int year, int month, t_day* days);
 void add_schedule(int year, int month, t_day* days);
-void stop_prog(void);
 void check_schdule(int year, int month, t_day* days);
 void delete_schdule(int year, int month, t_day* days);
 
@@ -58,6 +57,8 @@ void print_cal(int year, int month, t_day* days)
 {
     int month_of_days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     int week = 1;
+
+    printf("\n\n");
     if (month == 2)
     {
         if (year % 400 == 0)
@@ -76,12 +77,13 @@ void print_cal(int year, int month, t_day* days)
     if (isleapyear(year) && ((month == 1) || (month == 2)))
         week -= 1;
     week %= 7;
-    printf("%15d년 %d월\n\n", year, month);
-    printf("Sun   Mon   Tue   Wed   Thu   Fri   Sat\n\n");
+    printf("                         %15d년 %d월\n\n", year, month);
+    printf("                    Sun    Mon    Tue    Wed    Thu    Fri    Sat\n\n");
+    printf("                    ");    
     for (int i = 0; i < 7; i++)
     {
         if (week != i)
-            printf("      ");
+            printf("       ");
         else
             break;
     }
@@ -90,32 +92,39 @@ void print_cal(int year, int month, t_day* days)
         if (week == 7)
         {
             printf("\n\n");
+            printf("                    ");    
             week -= 7;
         }
         if (days[i].status == 1)
-            printf(" *%-4d", i + 1);
+        {
+            if (i <= 10)
+              printf(" *%-5d", i + 1);
+            else
+              printf(" *%-4d ", i + 1);
+        }
         else
-            printf(" %-5d", i + 1);
+            printf(" %-6d", i + 1);
         week++;
     }
-    printf("\n");
+    printf("\n\n\n\n\n\n\n");
 }
 
 int manu(int year, int month, t_day* days)
 {
     int sig;
-
-    system("clear");
+    
+    system("clear");    
     while (1)
     {
         print_cal(year, month, days);   
-        printf("1. 일정 입력 2. 일정 삭제 3. 일정 확인 4. 종료\n\n");
+        printf("1. 일정 입력           2. 일정 삭제           3. 일정 확인           4. 종료\n\n");
         printf("메뉴를 입력하세요 : ");
         scanf("%d", &sig);
         switch (sig)
         {
             case 1:
                 add_schedule(year, month, days);
+                system("clear");    
                 return (1);
             case 2:
                 delete_schdule(year, month, days);
@@ -124,7 +133,6 @@ int manu(int year, int month, t_day* days)
                 check_schdule(year, month, days);
                 return (1);
             case 4:
-               // stop_prog();
                 printf("\n");
                 return (0);
             default:
@@ -150,9 +158,10 @@ void check_schdule(int year, int month, t_day* days)
             printf("일정이 없습니다. 일정이 있는 날짜를 입력해주세요(일정 확인 종료: 0)\n");
     }
     printf("%d년 %d월 %d일 일정은 %s입니다.\n", year, month, day, days[day - 1].schedule);
+    getchar();
     while (1)
     {
-        enter = getchar();
+        scanf("%c", &enter);
         if (enter == '\n')
             break;
     }
@@ -175,7 +184,8 @@ void add_schedule(int year, int month, t_day* days)
     }
     days[day - 1].status = 1;
     printf("일정을 입력하세요 : ");
-    scanf("%s", days[day-1].schedule);
+    getchar();
+    scanf("%[^\n\r]", days[day-1].schedule);
 }
 
 void delete_schdule(int year, int month, t_day* days)
@@ -194,12 +204,6 @@ void delete_schdule(int year, int month, t_day* days)
             printf("일정이 없습니다. 일정이 있는 날짜를 입력해주세요(일정 삭제 종료: 0)\n");
     }
     days[day - 1].status = 0;
-}
-
-void stop_prog(void)
-{
-    printf("\n");
-    exit(1);
 }
 
 int isleapyear(int year)
