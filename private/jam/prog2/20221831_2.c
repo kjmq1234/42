@@ -97,13 +97,18 @@ void print_cal(int year, int month, t_day* days)
         }
         if (days[i].status == 1)
         {
-            if (i <= 10)
-              printf(" *%-5d", i + 1);
+            if (i < 9)
+              printf(" *%-3d  ", i + 1);
             else
-              printf(" *%-4d ", i + 1);
+              printf("*%-4d  ", i + 1);
         }
         else
-            printf(" %-6d", i + 1);
+        {
+            if (i < 9)
+                printf("  %-5d", i + 1);
+            else
+                printf(" %-6d", i + 1);
+        }
         week++;
     }
     printf("\n\n\n\n\n\n\n");
