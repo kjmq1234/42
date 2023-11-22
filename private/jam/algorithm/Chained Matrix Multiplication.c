@@ -53,29 +53,9 @@ int minmult(int n, const int* d, int** P)
             M[i][j] = minimum(M, i, j, d, &k);
             P[i][j] = k;
         }
-        // for (int i = 1; i <= n; i++)
-        // {
-        //     for (int j = 1; j <= n; j++)
-        //     {
-        //         printf("%3d ", M[i][j]);
-        //     }
-        //     printf("\n");
-        // }
-        //     printf("\n\n");
-        // for (int i = 1; i <= n; i++)
-        // {
-        //     for (int j = 1; j <= n; j++)
-        //     {
-        //         printf("%3d ", P[i][j]);
-        //     }
-        //     printf("\n");
-        // }
-        //     printf("\n\n");
-
     }
     return (M[1][n]);
 }
-
 int minimum(int** M, int i, int j, const int* d, int* mink)
 {
     int minvalue = INF;
