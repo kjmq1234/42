@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:17:02 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/05 02:26:38 by jam_min_2        ###   ########.fr       */
+/*   Updated: 2023/11/12 19:21:17 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-size_t			ft_strlen_c(const char *s, char c);
-int				wordcnt(char const *s, char c);
-size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
-void			strclear(char **s, unsigned int index);
-char const		*str_jump(const char *s, char c);
+static size_t		ft_strlen_c(const char *s, char c);
+static int			wordcnt(char const *s, char c);
+size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
+static void			strclear(char **s, unsigned int index);
+static char const	*str_jump(const char *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -47,11 +47,13 @@ char	**ft_split(char const *s, char c)
 	return (str);
 }
 
-int	wordcnt(char const *s, char c)
+static int	wordcnt(char const *s, char c)
 {
 	int	cnt;
 
 	cnt = 0;
+	if (!s)
+		exit(1);
 	while (*s)
 	{
 		while ((*s == c) && (*s))
@@ -64,7 +66,7 @@ int	wordcnt(char const *s, char c)
 	return (cnt);
 }
 
-size_t	ft_strlen_c(const char *s, char c)
+static size_t	ft_strlen_c(const char *s, char c)
 {
 	size_t	len;
 
@@ -77,7 +79,7 @@ size_t	ft_strlen_c(const char *s, char c)
 	return (len);
 }
 
-void	strclear(char **s, unsigned int index)
+static void	strclear(char **s, unsigned int index)
 {
 	unsigned int	i;
 
@@ -88,7 +90,7 @@ void	strclear(char **s, unsigned int index)
 	return ;
 }
 
-char const	*str_jump(const char *s, char c)
+static char const	*str_jump(const char *s, char c)
 {
 	while ((*s != c) && (*s))
 		s++;

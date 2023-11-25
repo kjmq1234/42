@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 21:00:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/11/12 22:06:15 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/11/03 00:01:03 by jam_min_2         #+#    #+#             */
+/*   Updated: 2023/11/03 00:01:56 by jam_min_2        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *s);
-
-void	ft_putendl_fd(char *s, int fd)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (!s)
-		return ;
-	if (fd < 1)
-		return ;
-	else
-	{
-		write(fd, s, ft_strlen(s));
-		write(fd, "\n", 1);
-	}
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
