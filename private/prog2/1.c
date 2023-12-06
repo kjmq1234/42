@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define N 10
 
 struct linked_list {
@@ -9,6 +10,7 @@ struct linked_list {
 
 typedef struct linked_list ELEMENT;
 typedef ELEMENT *LINK;
+
 LINK string_to_list(char s[]) {
 	LINK head;
 
@@ -34,12 +36,19 @@ void print_list(LINK head) {
 int main(void) {
 	char input[N];
 	LINK h;
-
-	printf("문자열 입력: ");
-	scanf("%s", input);
-	h = string_to_list(input);
-	printf("변환 리스트 결과 : \n");
-	print_list(h);
-	return 0;
-
+    while (1)
+    {
+        printf("문자열 입력: ");
+        scanf("%s", input);
+        if (strncmp(input, "exit", 4) == 0)
+        {
+            printf("\nBYE......");
+            exit(1);
+        }
+        h = string_to_list(input);
+        printf("변환 리스트 결과 : \n");
+    	print_list(h);
+        printf("\n\n");
+    }
+    return 0;
 }

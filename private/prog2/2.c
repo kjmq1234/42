@@ -1,28 +1,62 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define N 10
 
-#ifdef LITTLE
-typedef struct
-{
-    unsigned b0: 8, b1: 8;
-} word_bytes;
+struct linked_list {
+	char d;
+	struct linked_list *next;
+};
 
-typedef struct
-{
-    unsigned b0: 1, b1: 8;
-} word_bits;
+typedef struct linked_list ELEMENT;
+typedef ELEMENT *LINK;
 
-#endif
+LINK string_to_list(char s[]) {
+	LINK new;
+    LINK head;
+    LINK first;
+    int i = 0;
 
-#ifndef LITTLE
-typedef struct{
+	if (s[0] == '\0')
+		return NULL;
+	head = malloc(sizeof(ELEMENT));
+    head->d = s[i++];
+    first = head;
+    while(1) {
+		new = malloc(sizeof(ELEMENT));
+        head->next=new;
+        head = head->next;
+		head->d = s[i++];
+	     if (s[i] == '\0')
+		    return first;
+    }
+}
 
-unsigned b3: 8, b2: 8;
+void print_list(LINK head) {
+	if (head == NULL)
+		printf("NULL \n");
+	else {
+		printf("%c --> ", head -> d);
+		print_list(head -> next);
+	}
+}
 
-} word_bytes;
-
-typedef struct{
-
-unsigned b31: 1, b30: 8;
-
-} word_bits;
-#endif
+int main(void) {
+	char input[N];
+	LINK h;
+    while (1)
+    {
+        printf("문자열 입력: ");
+        scanf("%s", input);
+        if (strncmp(input, "exit", 4) == 0)
+        {
+            printf("\nBYE......");
+            exit(1);
+        }
+        h = string_to_list(input);
+        printf("변환 리스트 결과 : \n");
+    	print_list(h);
+        printf("\n\n");
+    }
+    return 0;
+}
