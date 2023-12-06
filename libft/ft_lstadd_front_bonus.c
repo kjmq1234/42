@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <jaemikim@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/10 10:43:49 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/08/10 11:11:47 by kyumkim          ###   ########.fr       */
+/*   Created: 2023/10/31 21:59:13 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/10/31 22:06:22 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
-void	check_valid(t_inp *map)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (map->empty == map->full || map->empty == map->obstacle)
-		errprt();
-	else if (map->full == map->obstacle)
-		errprt();
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

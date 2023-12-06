@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 21:00:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/11/12 22:06:15 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/11/02 23:58:28 by jam_min_2         #+#    #+#             */
+/*   Updated: 2023/11/12 19:18:55 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *s);
-
-void	ft_putendl_fd(char *s, int fd)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (!s)
+	t_list	*ptr;
+	t_list	*nextptr;
+
+	if ((!lst) || (!del))
 		return ;
-	if (fd < 1)
+	if (!*lst)
 		return ;
-	else
+	ptr = *lst;
+	while (ptr)
 	{
-		write(fd, s, ft_strlen(s));
-		write(fd, "\n", 1);
+		nextptr = ptr->next;
+		ft_lstdelone(ptr, del);
+		ptr = nextptr;
 	}
+	*lst = NULL;
 }

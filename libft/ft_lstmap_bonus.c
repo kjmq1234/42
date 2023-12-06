@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 21:00:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/11/12 22:06:15 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/11/02 23:50:36 by jam_min_2         #+#    #+#             */
+/*   Updated: 2023/11/12 19:19:04 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *s);
-
-void	ft_putendl_fd(char *s, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (!s)
-		return ;
-	if (fd < 1)
-		return ;
-	else
+	t_list	*newlst;
+	t_list	*new;
+	void	*edit;
+
+	newlst = NULL;
+	if ((!lst) || (!f) || (!del))
+		return (0);
+	while (lst)
 	{
-		write(fd, s, ft_strlen(s));
-		write(fd, "\n", 1);
+		edit = f(lst->content);
+		new = ft_lstnew(edit);
+		if (!new)
+		{
+			del(edit);
+			ft_lstclear(&newlst, del);
+			return (0);
+		}
+		ft_lstadd_back(&newlst, new);
+		lst = lst->next;
 	}
+	return (newlst);
 }

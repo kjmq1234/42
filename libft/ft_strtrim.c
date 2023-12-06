@@ -6,13 +6,13 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:16:02 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/04 17:26:11 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/12 19:22:06 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int				isset(char s, char const *set);
+static int		isset(char s, char const *set);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char			*ft_strdup(const char *s1);
 
@@ -42,7 +42,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (str);
 }
 
-int	isset(char s, char const *set)
+static int	isset(char s, char const *set)
 {
 	while (*set != '\0')
 	{

@@ -6,15 +6,15 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:03:30 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/04 17:55:54 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/11/12 19:18:35 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 char			*ft_strdup(const char *s1);
-size_t			numlen(int n);
-void			into_buf(char *str, int n, int len);
+static size_t	numlen(int n);
+static void		into_buf(char *str, int n, int len);
 
 char	*ft_itoa(int n)
 {
@@ -44,7 +44,7 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-void	into_buf(char *str, int n, int len)
+static void	into_buf(char *str, int n, int len)
 {
 	str[len] = '\0';
 	while (n > 0)
@@ -55,7 +55,7 @@ void	into_buf(char *str, int n, int len)
 	}
 }
 
-size_t	numlen(int n)
+static size_t	numlen(int n)
 {
 	int	cnt;
 

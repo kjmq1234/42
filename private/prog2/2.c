@@ -1,4 +1,5 @@
 #include <stdio.h>
+<<<<<<< HEAD
 #include <stdlib.h>
 #include <string.h>
 #define N 10
@@ -59,4 +60,12 @@ int main(void) {
         printf("\n\n");
     }
     return 0;
+=======
+#define print_age(x) printf(#x" : %d\n", age_##x)
+
+int main(void)
+{
+    int a= 3;
+    print_age();
+>>>>>>> 300cf9824974ad20bc970d200961779b86516856
 }

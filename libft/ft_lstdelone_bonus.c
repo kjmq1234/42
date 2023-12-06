@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errfunc.c                                          :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyumkim <kyumkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/10 01:10:41 by kyumkim           #+#    #+#             */
-/*   Updated: 2023/08/10 06:13:39 by kyumkim          ###   ########.fr       */
+/*   Created: 2023/11/03 00:14:55 by jam_min_2         #+#    #+#             */
+/*   Updated: 2023/11/12 19:07:00 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
-void	errprt(void)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	write(2, "map error\n", 10);
-	exit(1);
+	if ((!lst) || (!del))
+		return ;
+	del(lst->content);
+	free(lst);
 }
