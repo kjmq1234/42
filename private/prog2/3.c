@@ -1,36 +1,25 @@
 #include <stdio.h>
+#include <signal.h>
+#include <stdlib.h>
 
-void mygets(char* input);
-
-int main(void)
+void handler(int sig)
 {
-
-char input[100];
-
-printf("문자열을 입력하세요 : ");
-
-mygets(input); // mygets()로 대체
-
-printf("입력 문자열 : ");
-
-puts(input);
-// printf("%s", input);
-printf("입력 끝");
-
-return 0;
-
+	printf("%d번 신호가 발생했습니다.", sig);
+	exit(1);
 }
 
-void mygets(char* input)
-{
-    int i = 0;
+int main(){
+	int i, j;
+	int sig;
+	signal(2, handler);
+	signal(4, handler);
+	signal(8, handler);
+	signal(9, handler);
+	signal(11, handler);
+	signal(14, handler);
+	scanf("%d", &j);
+	i = 7 / j;
 
-    while (1)
-    {
-        input[i] = getchar();
-        if(input[i] == '\n')
-            break;
-        i++;
-    }
-    input[i] = '\0';
+	printf("%d", i);
+	return 0;
 }
