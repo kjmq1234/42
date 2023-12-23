@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_printf_util.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -20,13 +20,15 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(MAKE) -C $(LIB_DIR)
-    cp $(LIB_DIR)/libft.a $@
-	ar -rcs $@ $^
+#    cp $(LIB_DIR)/libft.a $@
+	ar -rcs $@ $?
 
 clean : 
+	make -C $(LIB_DIR) clean
 	$(RM) $(OBJS)
-	rm -f
+	
 fclean : clean
+	make -C $(LIB_DIR) fclean
 	$(RM) $(NAME)
 re : fclean all
 .PHONY : all clean fclean re 
