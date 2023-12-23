@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:37:37 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/11/12 22:07:13 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/23 21:03:29 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
 void (*del)(void *));
 void			ft_lstdelone(t_list *lst, void (*del)(void *));
+void			*ft_realloc(void *ptr, size_t size);
 
 #endif

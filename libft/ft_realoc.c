@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   ft_realoc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 00:14:55 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/12 19:07:00 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/12/23 19:40:47 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/12/23 19:51:03 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void *ft_realloc(void *ptr, size_t size)
 {
-	if ((!lst) || (!del))
-		return ;
-	del(lst->content);
-	free(lst);
+    void *newptr;
+
+    if (!ptr)
+        return (0);
+    if (size != 0)
+    {
+        newptr = (void*) ft_calloc(size, newptr);
+        ft_memmove(newptr, ptr, size);
+    }
+    free(ptr);
+    return (newptr);
 }

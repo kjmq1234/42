@@ -6,15 +6,13 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:16:02 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/12 19:22:06 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/24 02:45:31 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int		isset(char s, char const *set);
-size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
-char			*ft_strdup(const char *s1);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_putunbr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 23:50:36 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/12 19:19:04 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/12/24 03:33:40 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/12/24 03:38:40 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+static void	print_unbr(unsigned int n, int fd, int *len);
+
+int	ft_putunbr_fd(unsigned int n, int fd)
 {
-	t_list	*newlst;
-	t_list	*new;
-	void	*edit;
+	int len;
 
-	newlst = NULL;
-	if ((!lst) || (!f) || (!del))
+	len  = 0;
+	if (fd < 1)
 		return (0);
-	while (lst)
+	if (n == 0)
 	{
-		edit = f(lst->content);
-		new = ft_lstnew(edit);
-		if (!new)
-		{
-			del(edit);
-			ft_lstclear(&newlst, del);
-			return (0);
-		}
-		ft_lstadd_back(&newlst, new);
-		lst = lst->next;
+		write(fd, "0", 1);
+		return (1);
 	}
-	return (newlst);
+	print_unbr(n, fd, &len);
+	return (len);
+}
+
+static void	print_unbr(unsigned int n, int fd, int *len)
+{
+	char	tmp;
+
+	if (n / 10 != 0)
+		print_unbr(n / 10, fd, len);
+	tmp = n % 10 + '0';
+	*len += write(fd, &tmp, 1);
 }

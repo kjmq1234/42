@@ -4,10 +4,7 @@ SRCS = ft_printf.c
 
 OBJS = $(SRCS:.c=.o)
 
-
-BONUSSRCS = 
-
-BONUSOBJS = $(BONUSSRCS:.c=.o)
+LIBFT = libft
 
 INC = ft_printf.h
 
@@ -23,17 +20,13 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(MAKE) -C $(LIB_DIR)
-    cp $(LIB_DIR)/libft.a $@ 
+    cp $(LIB_DIR)/libft.a $@
 	ar -rcs $@ $^
 
-bonus : $(BONUSOBJS)
-	ar -rcs $(NAME) $^
-	@touch $@
-
 clean : 
-	$(RM) $(OBJS) $(BONUSOBJS)
-	rm -f bonus
+	$(RM) $(OBJS)
+	rm -f
 fclean : clean
 	$(RM) $(NAME)
 re : fclean all
-.PHONY : all clean fclean re bonus
+.PHONY : all clean fclean re 

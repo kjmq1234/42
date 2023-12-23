@@ -24,31 +24,20 @@ ft_striteri.c \
 ft_memchr.c \
  ft_putchar_fd.c \
 ft_putstr_fd.c \
-ft_putendl_fd \
+ft_putendl_fd.c \
 ft_putnbr_fd.c \
 ft_strtrim.c \
 ft_split.c \
-ft_itoa.c
+ft_itoa.c \
+ft_realloc.c \
+ft_puthex_fd.c \
+ft_putuhex_fd.c \
+ft_putunbr_fd.c \
+ft_putptr_fd.c
 
+OBJS = $(SRCS:.c=.o)
 
-OBJS = ft_isalnum.o ft_isalpha.o ft_isdigit.o ft_isascii.o ft_isprint.o \
-ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_calloc.o ft_strdup.o \
-ft_tolower.o ft_atoi.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_strncmp.o \
-ft_strchr.o ft_strrchr.o ft_strnstr.o \
-ft_memmove.o \
-ft_memcmp.o \
-ft_strjoin.o \
-ft_substr.o \
-ft_strmapi.o \
-ft_striteri.o \
-ft_memchr.o \
-ft_putchar_fd.o \
-ft_putstr_fd.o \
-ft_putendl_fd.o \
-ft_putnbr_fd.o \
-ft_strtrim.o \
-ft_split.o \
-ft_itoa.o
+OBJS.d = $(OBJS:.o=.d)
 
 BONUSSRCS = ft_lstnew_bonus.c \
 ft_lstadd_front_bonus.c \
@@ -61,6 +50,8 @@ ft_lstiter_bonus.c \
 ft_lstmap_bonus.c
 
 BONUSOBJS = $(BONUSSRCS:.c=.o)
+
+BONUSOBJS.d = $(BONUSSRCS:.o=.d)
 
 INC = ./
 
@@ -81,7 +72,7 @@ bonus : $(BONUSOBJS)
 	@touch $@
 
 clean : 
-	$(RM) $(OBJS) $(BONUSOBJS)
+	$(RM) $(OBJS) $(BONUSOBJS) $(OBJS.d) $(BONUSOBJS.d)
 	rm -f bonus
 fclean : clean
 	$(RM) $(NAME)
