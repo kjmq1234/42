@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:41:28 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/12/24 01:48:48 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/24 15:35:29 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-typedef struct s_data
-{
-	int		total_len;
-}	t_data;
-
 int		ft_printf(const char *format, ...);
 int		parse_info(const char *format, t_data *info, va_list ap);
 int		print_val(const char *format, t_data *info, va_list ap);
+int		parse_flag(const char *format, t_data *info);
+int		isflag(char flag);
+int		print_hex(const char *format, t_data *info, va_list ap);
+int     print_other(const char *format, t_data *info, va_list ap);
+int     istype(const char *format);
 
 #endif

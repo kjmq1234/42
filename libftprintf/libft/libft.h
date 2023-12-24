@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:37:37 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/12/24 03:44:51 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/24 13:35:14 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_data
+{
+	int	total_len;
+	int	hash;
+	int	empty;
+	int plus;
+}	t_data;
 
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
@@ -49,10 +57,10 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 void			*ft_memchr(const void *s, int c, size_t n);
-void			ft_putchar_fd(char c, int fd);
+int				ft_putchar_fd(char c, int fd);
 int				ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
-int				ft_putnbr_fd(int n, int fd);
+int				ft_putnbr_fd(int n, int fd, t_data *info);
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 int				ft_lstsize(t_list *lst);

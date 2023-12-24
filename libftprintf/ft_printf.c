@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:18:55 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/12/24 01:47:47 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/24 13:07:30 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,13 @@
 
 int	ft_printf(const char *format, ...)
 {
-	t_data	*info;
+	t_data	info;
 	va_list	ap;
 	int		len;
 
-	info = (t_data *) calloc(1, sizeof(t_data));
+	info.total_len = 0;
 	va_start(ap, format);
-	len = parse_info(format, info, ap);
-	if (len == -1)
-	{
-		free(info);
-		va_end(ap);
-		return (-1);
-	}
-	free(info);
+	len = parse_info(format, &info, ap);
 	va_end(ap);
 	return (len);
 }
