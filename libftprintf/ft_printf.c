@@ -6,13 +6,11 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 02:18:55 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/12/24 13:07:30 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:14:32 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
-#include <stdlib.h>
 
 int	ft_printf(const char *format, ...)
 {
