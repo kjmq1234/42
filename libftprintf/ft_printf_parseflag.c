@@ -6,15 +6,15 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 13:54:23 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/12/24 14:14:09 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:06:31 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int parse_flag(const char *format, t_data *info)
+int	parse_flag(const char *format, t_data *info)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	info->hash = 0;
@@ -38,7 +38,7 @@ int parse_flag(const char *format, t_data *info)
 	return (len);
 }
 
-int isflag(char flag)
+int	isflag(char flag)
 {
 	if ((flag == '#') || (flag == ' ') || (flag == '+'))
 		return (1);

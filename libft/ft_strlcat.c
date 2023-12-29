@@ -6,13 +6,11 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 03:58:36 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/11/12 19:14:50 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/24 02:45:04 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-size_t	ft_strlen(const char *s);
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

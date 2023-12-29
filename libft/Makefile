@@ -24,12 +24,16 @@ ft_striteri.c \
 ft_memchr.c \
  ft_putchar_fd.c \
 ft_putstr_fd.c \
-ft_putendl_fd \
+ft_putendl_fd.c \
 ft_putnbr_fd.c \
 ft_strtrim.c \
 ft_split.c \
 ft_itoa.c \
-ft_realloc.c
+ft_realloc.c \
+ft_puthex_fd.c \
+ft_putuhex_fd.c \
+ft_putunbr_fd.c \
+ft_putptr_fd.c
 
 OBJS = $(SRCS:.c=.o)
 

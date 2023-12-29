@@ -1,1 +1,3 @@
-ft_strtrim.o: ft_strtrim.c
+ft_strtrim.o: ft_strtrim.c libft.h
+
+libft.h:

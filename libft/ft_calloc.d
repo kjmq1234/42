@@ -1,1 +1,3 @@
-ft_calloc.o: ft_calloc.c
+ft_calloc.o: ft_calloc.c libft.h
+
+libft.h:

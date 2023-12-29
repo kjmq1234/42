@@ -6,12 +6,11 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:49:21 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/11/04 18:13:05 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/24 02:43:38 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 t_list	*ft_lstnew(void *content)
 {

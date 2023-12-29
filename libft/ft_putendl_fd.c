@@ -6,14 +6,12 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:00:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/11/12 22:06:15 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/24 02:49:41 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
-
-size_t	ft_strlen(const char *s);
+#include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {

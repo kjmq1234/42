@@ -6,12 +6,11 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:00:52 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/12/24 15:51:25 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:11:50 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdlib.h>
 #include <unistd.h>
 
 int	parse_info(const char *format, t_data *info, va_list ap)
@@ -62,10 +61,10 @@ int	print_val(const char *format, t_data *info, va_list ap)
 	return (1);
 }
 
-int print_hex(const char *format, t_data *info, va_list ap)
+int	print_hex(const char *format, t_data *info, va_list ap)
 {
-	int	len;
-	unsigned int val;
+	int				len;
+	unsigned int	val;
 
 	len = 0;
 	if ((info->empty == 1) || (info->plus == 1))
@@ -88,7 +87,7 @@ int print_hex(const char *format, t_data *info, va_list ap)
 	return (len);
 }
 
-int print_other(const char *format, t_data *info, va_list ap)
+int	print_other(const char *format, t_data *info, va_list ap)
 {
 	int	len;
 
@@ -108,7 +107,7 @@ int print_other(const char *format, t_data *info, va_list ap)
 	return (len);
 }
 
-int istype(const char *format)
+int	istype(const char *format)
 {
 	if ((*format == 'u') || (*format == 'p') || \
 	(*format == 's') || (*format == 'c') || \

@@ -6,15 +6,14 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:17:02 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/12 19:21:17 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/24 02:44:45 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static size_t		ft_strlen_c(const char *s, char c);
 static int			wordcnt(char const *s, char c);
-size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
 static void			strclear(char **s, unsigned int index);
 static char const	*str_jump(const char *s, char c);
 

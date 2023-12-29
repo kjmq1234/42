@@ -6,13 +6,12 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:03:30 by jam_min_2         #+#    #+#             */
-/*   Updated: 2023/11/12 19:18:35 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/24 02:42:54 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char			*ft_strdup(const char *s1);
 static size_t	numlen(int n);
 static void		into_buf(char *str, int n, int len);
 

@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jam_min_2 <jam_min_2@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:04:06 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/11/05 01:49:45 by jam_min_2        ###   ########.fr       */
+/*   Updated: 2023/12/24 02:44:59 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-size_t			ft_strlen(const char *s);
-size_t			ft_strlcat(char *dest, char *src, size_t size);
-size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
-char			*ft_strdup(const char *s1);
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

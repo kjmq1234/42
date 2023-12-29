@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:37:37 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/12/24 13:35:14 by jaemikim         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:08:16 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_data
 	int	total_len;
 	int	hash;
 	int	empty;
-	int plus;
+	int	plus;
 }	t_data;
 
 int				ft_isdigit(int c);
