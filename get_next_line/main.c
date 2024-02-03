@@ -6,7 +6,11 @@
 int main(void)
 {
    int fd = open("test.txt", O_RDONLY);
-   printf("%s", get_next_line(fd));
 
-//    printf("%s", ft_strchr("adas\0asd", '\0'));
+      printf("%s", get_next_line(fd));
+      printf("%s", get_next_line(fd));
+      printf("%s", get_next_line(fd));
+      printf("%s", get_next_line(fd));
+      printf("%s", get_next_line(fd));
+      printf("%s", get_next_line(fd));
 }

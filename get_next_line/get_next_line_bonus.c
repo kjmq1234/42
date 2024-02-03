@@ -6,13 +6,13 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 19:02:41 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/02/03 21:41:31 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/02/03 21:07:04 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-#define BUFFER_SIZE 42
+#define BUFFER_SIZE 1
 
 char	*get_next_line(int fd)
 {
@@ -38,7 +38,7 @@ char	*read_line(int fd, char *buffer, char **backup)
 	char	*return_line;
 
 	return_val = read_file(fd, buffer, backup);
-	if ((return_val == -1) || (*backup == NULL))
+	if (return_val == -1)
 	{
 		free(backup);
 		return (NULL);
