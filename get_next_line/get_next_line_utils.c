@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 19:56:54 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/02/03 21:03:38 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/02/06 02:38:40 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -31,6 +31,8 @@ char	*ft_strdup(const char *s1)
 	char	*str;
 	char	*tmp;
 
+	if (!s1)
+		return (NULL);
 	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!str)
 		return (NULL);

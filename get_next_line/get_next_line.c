@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 19:02:41 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/02/03 21:41:31 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/02/06 02:40:01 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-#define BUFFER_SIZE 42
 
 char	*get_next_line(int fd)
 {
@@ -29,6 +27,7 @@ char	*get_next_line(int fd)
 		data_table[fd] = ft_strdup("");
 	line = read_line(fd, buffer, &data_table[fd]);
 	free(buffer);
+	buffer = NULL;
 	return (line);
 }
 
@@ -38,14 +37,16 @@ char	*read_line(int fd, char *buffer, char **backup)
 	char	*return_line;
 
 	return_val = read_file(fd, buffer, backup);
-	if ((return_val == -1) || (*backup == NULL))
+	if ((return_val == -1) || (*backup[0] == '\0'))
 	{
-		free(backup);
+		free(*backup);
+		*backup = NULL;
 		return (NULL);
 	}
-	if (ft_strchr(*backup, '\n'))
+	if (return_val != 0)
 		return (separate_line(backup));
 	return_line = ft_strdup(*backup);
+	free(*backup);
 	*backup = NULL;
 	return (return_line);
 }
@@ -65,6 +66,7 @@ int	read_file(int fd, char *buffer, char **backup)
 		newbackup = *backup;
 		*backup = ft_strjoin(newbackup, buffer);
 		free(newbackup);
+		newbackup = NULL;
 	}
 	return (bytes);
 }
@@ -79,10 +81,11 @@ char	*separate_line(char **enterLine)
 	while ((*enterLine)[idx] != '\n')
 		idx++;
 	temp = *enterLine;
-	return_line = (char *) malloc(sizeof(char) * (idx + 1));
+	return_line = (char *) malloc(sizeof(char) * (idx + 2));
 	ft_strlcpy(return_line, temp, idx + 2);
 	*enterLine = ft_strdup(&temp[idx + 1]);
 	free(temp);
+	temp = NULL;
 	return (return_line);
 }
 
