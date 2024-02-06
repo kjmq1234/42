@@ -6,7 +6,7 @@
 /*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 19:02:41 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/02/06 02:40:01 by jammin           ###   ########.fr       */
+/*   Updated: 2024/02/06 19:24:42 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*read_line(int fd, char *buffer, char **backup)
 	char	*return_line;
 
 	return_val = read_file(fd, buffer, backup);
-	if ((return_val == -1) || (*backup[0] == '\0'))
+	if ((return_val == -1) || (return_val == -2))
 	{
 		free(*backup);
 		*backup = NULL;
@@ -68,6 +68,8 @@ int	read_file(int fd, char *buffer, char **backup)
 		free(newbackup);
 		newbackup = NULL;
 	}
+	if (*backup[0] == '\0')
+		return (-2);
 	return (bytes);
 }
 
