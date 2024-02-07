@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:55:53 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/02/06 02:38:53 by jammin           ###   ########.fr       */
+/*   Updated: 2024/02/07 18:03:54 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 char	*separate_line(char **enterLine);
 char	*read_line(int fd, char *buffer, char **line);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		read_file(int fd, char *buffer, char **backup);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);

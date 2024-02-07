@@ -27,7 +27,6 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 char	*separate_line(char **enterLine);
 char	*read_line(int fd, char *buffer, char **line);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		read_file(int fd, char *buffer, char **backup);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
