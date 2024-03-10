@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 18:58:45 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/03/09 23:06:37 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/03/10 12:26:56 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
     {
         ft_putendl_fd("잘못된 입력 값입니다.", 1);
     }
-        
 }
 
 void	make_send_str(pid_t pid, char *str)

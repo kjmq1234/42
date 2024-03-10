@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 18:51:04 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/03/09 23:25:09 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/03/10 12:34:59 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int main(void)
 	pid = getpid();
 	print_pid(pid);
 	handler.sa_handler = sig_handle;
-	//  signal(SIGUSR1, sig_handle);
-	//  signal(SIGUSR2, sig_handle);
-
+	handler.sa_flags = '\0';
 	sigaction(SIGUSR1, &handler, NULL);
 	sigaction(SIGUSR2, &handler, NULL);
 
