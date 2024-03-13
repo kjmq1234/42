@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 18:51:04 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/03/10 13:13:25 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/03/14 00:16:46 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+char byte;
 
 int	main(void)
 {
@@ -30,17 +32,40 @@ int	main(void)
 void	sig_handle(int signal)
 {
 	static int		bit;
-	static char		byte;
+	static int		pid;
 
 	if (signal == SIGUSR1)
 		byte |= (1 << bit);
 	bit++;
-	if (bit == 8)
+	if ((pid == 1) && (bit == 8))
 	{
-		ft_putchar_fd(byte, 1);
+		pid = get_pid(byte);
 		bit = 0;
 		byte = 0;
 	}
+	else if (bit == 8)
+	{
+		ft_putchar_fd(byte, 1);
+		if (byte == '\0')
+			pid = 1;
+		byte = 0;
+		bit = 0;
+	}
+}
+
+int	get_pid(char byte)
+{
+	static char		pid_c[10];
+	static int		idx;
+
+	pid_c[idx++] = byte;
+	if (byte == '\0')
+	{
+		kill(atoi(pid_c), SIGUSR1);
+		idx = 0;
+		return (0);
+	}
+	return (1);
 }
 
 void	print_pid(pid_t pid)

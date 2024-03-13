@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 18:58:45 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/03/10 12:51:08 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/03/10 13:43:45 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 int	main(int argc, char *argv[])
 {
-	pid_t	pid;
+	pid_t				pid;
+	struct sigaction	handler;
 
+	handler.sa_handler = ack_handle;
+	handler.sa_flags = '\0';
+	sigaction(SIGUSR1, &handler, NULL);
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
@@ -41,6 +45,24 @@ void	make_send_str(pid_t pid, char *str)
 	}
 	send_packet(pid, '\n');
 	send_packet(pid, '\0');
+	make_send_pid(pid);
+}
+
+void	make_send_pid(pid_t pid)
+{
+	pid_t	pid_c;
+	char	*pid_ctostr;
+	int		idx;
+
+	pid_c = getpid();
+	pid_ctostr = ft_itoa(pid_c);
+	idx = 0;
+	while (pid_ctostr[idx] != '\0')
+	{
+		send_packet(pid, pid_ctostr[idx]);
+		idx++;
+	}
+	send_packet(pid, '\0');
 }
 
 void	send_packet(pid_t pid, char str)
@@ -57,4 +79,10 @@ void	send_packet(pid_t pid, char str)
 		usleep(500);
 		bit++;
 	}
+}
+
+void	ack_handle(int signal)
+{
+	signal += 1;
+	ft_putendl_fd("ACK 수신", 1);
 }
