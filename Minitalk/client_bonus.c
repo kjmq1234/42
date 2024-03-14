@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 18:58:45 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/03/10 13:43:45 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:23:02 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	make_send_pid(pid_t pid)
 		idx++;
 	}
 	send_packet(pid, '\0');
+	free(pid_ctostr);
 }
 
 void	send_packet(pid_t pid, char str)

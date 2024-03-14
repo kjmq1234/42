@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 18:51:04 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/03/14 00:16:46 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:22:41 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	get_pid(char byte)
 	pid_c[idx++] = byte;
 	if (byte == '\0')
 	{
-		kill(atoi(pid_c), SIGUSR1);
+		kill(ft_atoi(pid_c), SIGUSR1);
 		idx = 0;
 		return (0);
 	}
