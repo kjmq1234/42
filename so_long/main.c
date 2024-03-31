@@ -7,6 +7,11 @@ int	main(int argc, char *argv[])
 		printf("맵을 넣어주세요.");
 		return (0);
 	}
+	if (name_valid(argv[1]) != 0)
+	{
+		printf("잘못된 이름입니다.");
+		return (0);
+	}
 	t_map map_info;
 	char **map;
 
@@ -16,8 +21,5 @@ int	main(int argc, char *argv[])
 	read_map(argv[1], map, map_info);
 	parse_map_element(map, &map_info);
 	if(!valid_check(map, &map_info))
-	{
-		free(map);
-		return (0);
-	}
+		exit(1);
 }

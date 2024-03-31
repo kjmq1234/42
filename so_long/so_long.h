@@ -3,8 +3,8 @@
 
 # include "mlx/mlx.h"
 # include "libft/libft.h"
-//# include "libftprintf/ft_printf.h"
-# include "get_next_line/get_next_line_bonus.h"
+// # include "libftprintf/ft_printf.h"
+# include "get_next_line_bonus.h"
 #include <fcntl.h>
 
 
@@ -50,5 +50,6 @@ int		element_valid(t_map map_info);
 int		edge_valid(char **map, t_map map_info);
 void	init_dfs(t_dfs* dfs_info);
 int		road_valid(char **map,t_map map_info);
+int name_valid(char* name);
 
 #endif

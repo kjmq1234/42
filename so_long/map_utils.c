@@ -7,6 +7,8 @@ void	parse_mapinfo(char *file, t_map* map_info)
 
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
+	if (!line)
+		exit(1);
 	map_info->width = ft_strlen_n(line);
 	map_info->height++;
 	while (1)
@@ -73,6 +75,8 @@ void	read_map(char *file, char **map, t_map map_info)
 
 	i = 0;
 	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		exit(1);
 	while(i < map_info.height)
 	{
 		map[i] = get_next_line(fd);

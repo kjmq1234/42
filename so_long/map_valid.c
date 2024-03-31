@@ -37,7 +37,7 @@ int	edge_valid(char **map, t_map map_info)
 	{
 		while (wid < map_info.width)
 		{
-			if ((map[hei][wid] != '1') && ((hei == 0) || (hei == map_info.height - 1) || (wid == map_info.width) || (wid == 0)))
+			if ((map[hei][wid] != '1') && ((hei == 0) || (hei == map_info.height - 1) || (wid == map_info.width - 1) || (wid == 0)))
 			{
 				printf("Error\n벽에 문제가 있습니다.\n");
 				return (0);
@@ -64,3 +64,11 @@ int	road_valid(char **map,t_map map_info)
 	return (0);
 }
 
+int name_valid(char* name)
+{
+	char*	dot;
+	if (ft_strrchr(name, '.') == 0)
+		return (0);
+		dot = ft_strrchr(name, '.');
+	return(ft_memcmp(dot, ".ber\0", 5));
+}
