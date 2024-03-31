@@ -63,3 +63,4 @@ int	road_valid(char **map,t_map map_info)
 	map_info.height = map_info.height;
 	return (0);
 }
+
