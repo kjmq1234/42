@@ -30,6 +30,8 @@ typedef struct s_map
 	unsigned long long		c_num;
 	unsigned				e_num;
 	unsigned				p_num;
+	unsigned				p_x;
+	unsigned				p_y;
 } t_map;
 
 typedef struct s_dfs
@@ -49,7 +51,7 @@ int		valid_check(char **map, t_map* map_info);
 int		element_valid(t_map map_info);
 int		edge_valid(char **map, t_map map_info);
 void	init_dfs(t_dfs* dfs_info);
-int		road_valid(char **map,t_map map_info);
-int name_valid(char* name);
-
+int		road_valid(char **map,t_map map_info, t_dfs dfs_info, int x, int y, int i);
+int		name_valid(char* name);
+void	exit_open(void);
 #endif

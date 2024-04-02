@@ -2,7 +2,10 @@
 
 int	valid_check(char **map, t_map* map_info)
 {
-	if ((!edge_valid(map, *map_info)) | (!element_valid(*map_info)) )//| if (!road_valid()))
+	t_dfs dfs_info;
+
+	init_dfs(&dfs_info);
+	if ((!edge_valid(map, *map_info)) | (!element_valid(*map_info)) | (!road_valid(map, *map_info, dfs_info, map_info->p_x, map_info->p_y, 0)))
 		return(0);
 	return (1);
 }
@@ -50,17 +53,29 @@ int	edge_valid(char **map, t_map map_info)
 	return (1);
 }
 
-int	road_valid(char **map,t_map map_info)
+int	road_valid(char **map,t_map map_info, t_dfs dfs_info, int x, int y, int i)
 {
-	// t_dfs	dfs_info;
-	// int		x[4];
-	// int		y[4];
-	int		i;
+	const int	x_move[4] = {1, -1, 0, 0};
+	const int	y_move[4] = {0, 0, 1, -1};
 
-	i = 0;
-	//init_dfs(&dfs_info, x, y);
-	map[0][0] = 1;
-	map_info.height = map_info.height;
+	printf("x: %d y: %d i: %d\nc: %d e: %d p: %d\n\n", x, y, dfs_info.get_coin, dfs_info.e_num, dfs_info.p_num);
+	if (i > 3)
+		return (0);
+	if (map[y][x] == '1')
+		return (0);
+	if (map[y][x] == 'c')
+		dfs_info.get_coin++;
+	if (map[y][x] == 'e')
+		dfs_info.e_num++;
+	if (map[y][x] == 'p')
+		dfs_info.p_num++;
+	map[y][x] = '1';
+	if ((dfs_info.e_num == 1) && (dfs_info.p_num == 1) && (dfs_info.get_coin == map_info.c_num))
+		return (1);
+	if (road_valid(map, map_info, dfs_info, x + x_move[i], y + y_move[i], i))
+		return (1);
+	else
+		road_valid(map, map_info, dfs_info, x + x_move[i], y + y_move[i], i + 1);
 	return (0);
 }
 
@@ -68,7 +83,7 @@ int name_valid(char* name)
 {
 	char*	dot;
 	if (ft_strrchr(name, '.') == 0)
-		return (0);
+		return (1);
 		dot = ft_strrchr(name, '.');
-	return(ft_memcmp(dot, ".ber\0", 5));
+	return(ft_strncmp(dot, ".ber\0", 5));
 }

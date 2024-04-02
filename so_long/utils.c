@@ -14,3 +14,9 @@ size_t	ft_strlen_n(const char *s)
 	}
 	return (len);
 }
+
+void exit_open(void)
+{
+	printf("잘못된 파일명입니다.");
+	exit(1);
+}

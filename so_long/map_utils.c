@@ -6,6 +6,8 @@ void	parse_mapinfo(char *file, t_map* map_info)
 	char*	line;
 
 	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		exit_open();
 	line = get_next_line(fd);
 	if (!line)
 		exit(1);
@@ -60,7 +62,11 @@ void	parse_map_element(char **map, t_map* map_info)
 			if (map[hei][wid] == 'C')
 				map_info->c_num++;
 			if (map[hei][wid] == 'P')
+			{
 				map_info->p_num++;
+				map_info->p_y = hei;
+				map_info->p_x = wid;
+			}
 			wid++;
 		}
 		hei++;
@@ -76,7 +82,7 @@ void	read_map(char *file, char **map, t_map map_info)
 	i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		exit(1);
+		exit_open();
 	while(i < map_info.height)
 	{
 		map[i] = get_next_line(fd);
