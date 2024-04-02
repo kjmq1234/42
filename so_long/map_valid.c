@@ -58,7 +58,7 @@ int	road_valid(char **map,t_map map_info, t_dfs dfs_info, int x, int y, int i)
 	const int	x_move[4] = {1, -1, 0, 0};
 	const int	y_move[4] = {0, 0, 1, -1};
 
-	printf("x: %d y: %d i: %d\nc: %d e: %d p: %d\n\n", x, y, dfs_info.get_coin, dfs_info.e_num, dfs_info.p_num);
+	printf("x: %d y: %d i: %llu\nc: %d e: %d p: d \n", x, y, dfs_info.get_coin, dfs_info.e_num, dfs_info.p_num);
 	if (i > 3)
 		return (0);
 	if (map[y][x] == '1')

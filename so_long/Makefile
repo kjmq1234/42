@@ -1,30 +1,35 @@
-SRC = main.c init_data.c utils.c map_valid.c map_utils.c get_next_line_bonus.c get_next_line_utils_bonus.c
-OBJ = $(SRC:.c=.o)
-
+NAME = so_long
+LIBFTNAME = libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Werror -Wextra
+LIBFTDIR = ./libft
 
-all: so_long
+SRCS = main.c init_data.c utils.c map_valid.c map_utils.c map_utils.c get_next_line_bonus.c get_next_line_utils_bonus.c
+OBJS = $(SRCS:.c=.o)
 
-so_long: $(OBJ) libft
-	@$(CC) -o $@ $< -Llibft -lft
+all: $(NAME)
 
+makelibft:
+	make -C $(LIBFTDIR)
+	cp $(LIBFTDIR)/$(LIBFTNAME) .
+	mv $(LIBFTNAME) $(NAME)
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $?
+makeprintf:
+	make -C ./libftprintf
+	cp ./libftprintf/libftprintf.a .
+	mv libftprintf.a $(NAME)
 
-libft:
-	@make -C libft
+$(NAME): makelibft makeprintf $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 
-libftprintf:
-	@make -C libftprintf
+bonus:
 
 clean:
-	rm -f $(OBJ)
-	make -C libft libftprintf
+	@rm -f $(OBJS)
+	@cd $(LIBFTDIR) && make clean
 	
 fclean: clean
-	rm -f so_long libft/libft.a libftprintf/libftprintf.a
+	@rm -f $(NAME)
+	@cd $(LIBFTDIR) && make fclean
 	
 re: fclean all
-.PHONY: all bonus libft clean fclean re
