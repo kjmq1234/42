@@ -2,10 +2,7 @@
 
 int	valid_check(char **map, t_map* map_info)
 {
-	t_dfs dfs_info;
-
-	init_dfs(&dfs_info);
-	if ((!edge_valid(map, *map_info)) | (!element_valid(*map_info)) | (!road_valid(map, *map_info, dfs_info, map_info->p_x, map_info->p_y, 0)))
+	if ((!edge_valid(map, *map_info)) | (!element_valid(*map_info)) | ((!road_valid(map, *map_info))))
 		return(0);
 	return (1);
 }
@@ -53,29 +50,28 @@ int	edge_valid(char **map, t_map map_info)
 	return (1);
 }
 
-int	road_valid(char **map,t_map map_info, t_dfs dfs_info, int x, int y, int i)
+unsigned int	search_item_valid(char **map,t_map map_info, int x, int y, char item)
 {
-	const int	x_move[4] = {1, -1, 0, 0};
-	const int	y_move[4] = {0, 0, 1, -1};
+	int	cnt;
 
-	printf("x: %d y: %d i: %llu\nc: %d e: %d p: d \n", x, y, dfs_info.get_coin, dfs_info.e_num, dfs_info.p_num);
-	if (i > 3)
-		return (0);
+	cnt = 0;
 	if (map[y][x] == '1')
 		return (0);
-	if (map[y][x] == 'c')
-		dfs_info.get_coin++;
-	if (map[y][x] == 'e')
-		dfs_info.e_num++;
-	if (map[y][x] == 'p')
-		dfs_info.p_num++;
-	map[y][x] = '1';
-	if ((dfs_info.e_num == 1) && (dfs_info.p_num == 1) && (dfs_info.get_coin == map_info.c_num))
-		return (1);
-	if (road_valid(map, map_info, dfs_info, x + x_move[i], y + y_move[i], i))
-		return (1);
-	else
-		road_valid(map, map_info, dfs_info, x + x_move[i], y + y_move[i], i + 1);
+	if (map[y][x] != 'V')
+	{
+		if (map[y][x] == item)
+		{
+			map[y][x] = 'V';
+			return (1);
+		}
+		map[y][x] = 'V';
+		cnt = 0;
+		cnt += search_item_valid(map, map_info, x + 1, y, item);
+		cnt += search_item_valid(map, map_info, x - 1, y, item);
+		cnt += search_item_valid(map, map_info, x, y + 1, item);
+		cnt += search_item_valid(map, map_info, x, y - 1, item);
+		return (cnt);
+	}
 	return (0);
 }
 
@@ -86,4 +82,24 @@ int name_valid(char* name)
 		return (1);
 		dot = ft_strrchr(name, '.');
 	return(ft_strncmp(dot, ".ber\0", 5));
+}
+
+int road_valid(char **map, t_map map_info)
+{
+	char	**e_map;
+	char	**c_map;
+	char	**p_map;
+
+	e_map = copy_map(map, map_info);
+	c_map = copy_map(map, map_info);
+	p_map = copy_map(map, map_info);
+	
+	if ((search_item_valid(e_map, map_info, map_info.p_x, map_info.p_y, 'E') != map_info.e_num) || \
+	(search_item_valid(c_map, map_info, map_info.p_x, map_info.p_y, 'C') != map_info.c_num) || \
+	(search_item_valid(p_map, map_info, map_info.p_x, map_info.p_y, 'P') != map_info.p_num))
+	{
+		printf("잘못된 경로가 있습니다.");
+		return (0);
+	}
+	return (1);
 }

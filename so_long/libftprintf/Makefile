@@ -13,12 +13,12 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 makelibft:
-	make -C $(LIBFTDIR)
-	cp $(LIBFTDIR)/$(LIBFTNAME) .
-	mv $(LIBFTNAME) $(NAME)
+	@make -C $(LIBFTDIR)
+	@cp $(LIBFTDIR)/$(LIBFTNAME) .
+	@mv $(LIBFTNAME) $(NAME)
 
 $(NAME): makelibft $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+	@ar -rcs $(NAME) $(OBJS)
 
 bonus:
 

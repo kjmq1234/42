@@ -20,3 +20,20 @@ void exit_open(void)
 	printf("잘못된 파일명입니다.");
 	exit(1);
 }
+
+char** copy_map(char** map, t_map info)
+{
+	unsigned long long	i;
+	char**				copy;
+
+	i = 0;
+	copy = (char**) malloc(sizeof(char*) * info.height);
+	if(!copy)
+		exit(1);
+	while (i < info.height)
+	{
+		copy[i] = ft_strdup(map[i]);
+		i++;
+	}
+	return (copy);
+}

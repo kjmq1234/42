@@ -34,24 +34,19 @@ typedef struct s_map
 	unsigned				p_y;
 } t_map;
 
-typedef struct s_dfs
-{
-	unsigned long long get_coin;
-	unsigned			e_num;
-	unsigned			p_num;
-} t_dfs;
+void			parse_mapinfo(char *file, t_map* map_info);
+void			init_mapinfo(t_map* map_info);
+char			**malloc_map(t_map map_info);
+void			read_map(char *file, char **map, t_map map_info);
+size_t			ft_strlen_n(const char *s);
+void			parse_map_element(char **map, t_map* map_info);
+int				valid_check(char **map, t_map* map_info);
+int				element_valid(t_map map_info);
+int				edge_valid(char **map, t_map map_info);
+int				road_valid(char **map,t_map map_info);
+int				name_valid(char* name);
+void			exit_open(void);
+unsigned int	search_item_valid(char **map,t_map map_info, int x, int y, char item);
+char**			copy_map(char** map, t_map info);
 
-void	parse_mapinfo(char *file, t_map* map_info);
-void	init_mapinfo(t_map* map_info);
-char	**malloc_map(t_map map_info);
-void	read_map(char *file, char **map, t_map map_info);
-size_t	ft_strlen_n(const char *s);
-void	parse_map_element(char **map, t_map* map_info);
-int		valid_check(char **map, t_map* map_info);
-int		element_valid(t_map map_info);
-int		edge_valid(char **map, t_map map_info);
-void	init_dfs(t_dfs* dfs_info);
-int		road_valid(char **map,t_map map_info, t_dfs dfs_info, int x, int y, int i);
-int		name_valid(char* name);
-void	exit_open(void);
 #endif
