@@ -55,29 +55,26 @@ unsigned int	search_item_valid(char **map,t_map map_info, int x, int y, char ite
 	int	cnt;
 
 	cnt = 0;
-	if (map[y][x] == '1')
+	if ((map[y][x] == '1') || (map[y][x] == 'V'))
 		return (0);
-	if (map[y][x] != 'V')
+	if (map[y][x] == item)
 	{
-		if (map[y][x] == item)
-		{
-			map[y][x] = 'V';
-			return (1);
-		}
 		map[y][x] = 'V';
-		cnt = 0;
-		cnt += search_item_valid(map, map_info, x + 1, y, item);
-		cnt += search_item_valid(map, map_info, x - 1, y, item);
-		cnt += search_item_valid(map, map_info, x, y + 1, item);
-		cnt += search_item_valid(map, map_info, x, y - 1, item);
-		return (cnt);
+		return (1);
 	}
-	return (0);
+	map[y][x] = 'V';
+	cnt = 0;
+	cnt += search_item_valid(map, map_info, x + 1, y, item);
+	cnt += search_item_valid(map, map_info, x - 1, y, item);
+	cnt += search_item_valid(map, map_info, x, y + 1, item);
+	cnt += search_item_valid(map, map_info, x, y - 1, item);
+	return (cnt);
 }
 
 int name_valid(char* name)
 {
 	char*	dot;
+
 	if (ft_strrchr(name, '.') == 0)
 		return (1);
 		dot = ft_strrchr(name, '.');
@@ -93,7 +90,6 @@ int road_valid(char **map, t_map map_info)
 	e_map = copy_map(map, map_info);
 	c_map = copy_map(map, map_info);
 	p_map = copy_map(map, map_info);
-	
 	if ((search_item_valid(e_map, map_info, map_info.p_x, map_info.p_y, 'E') != map_info.e_num) || \
 	(search_item_valid(c_map, map_info, map_info.p_x, map_info.p_y, 'C') != map_info.c_num) || \
 	(search_item_valid(p_map, map_info, map_info.p_x, map_info.p_y, 'P') != map_info.p_num))
@@ -101,5 +97,8 @@ int road_valid(char **map, t_map map_info)
 		printf("잘못된 경로가 있습니다.");
 		return (0);
 	}
+	free_maps(e_map, map_info);
+	free_maps(c_map, map_info);
+	free_maps(p_map, map_info);
 	return (1);
 }

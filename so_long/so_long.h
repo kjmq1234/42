@@ -48,5 +48,6 @@ int				name_valid(char* name);
 void			exit_open(void);
 unsigned int	search_item_valid(char **map,t_map map_info, int x, int y, char item);
 char**			copy_map(char** map, t_map info);
+void			free_maps(char** map, t_map info);
 
 #endif

@@ -37,3 +37,16 @@ char** copy_map(char** map, t_map info)
 	}
 	return (copy);
 }
+
+void free_maps(char** map, t_map info)
+{
+	unsigned long long i;
+
+	i = 0;
+	while (i < info.height)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
