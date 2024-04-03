@@ -6,7 +6,7 @@
 /*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:40:38 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/03 18:23:49 by jammin           ###   ########.fr       */
+/*   Updated: 2024/04/03 23:09:48 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_element
 {
     struct s_element*	next;
+    struct s_element*	prev;
 	int			data;
 } t_element;
 
@@ -39,9 +40,19 @@ typedef struct s_push_swap
 
 void	init_deque(t_deque* deque);
 void	swap(t_deque* deque);
+void	push_bottom(t_deque* deque, int data);
+void	push_top(t_deque* deque, int data);
+t_element*	pop_top(t_deque* deque);
+t_element*	pop_bottom(t_deque* deque);
 
+void	set_ab(t_push_swap* set, t_deque* deque1, t_deque* deque2);
 
-void	set_ab(t_deque* deque1, t_deque* deque2);
+void	sa(t_push_swap* set);
+void	sb(t_push_swap* set);
+void	ss(t_push_swap* set);
+void	pa(t_push_swap* set);
+void	pb(t_push_swap* set);
+
 
 t_element*	make_node(int data);
 

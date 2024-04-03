@@ -6,7 +6,7 @@
 /*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:49:13 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/03 18:24:21 by jammin           ###   ########.fr       */
+/*   Updated: 2024/04/03 22:55:33 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	swap(t_deque* deque)
 		return ;
 
 	temp.data = deque->top->data;
-	deque->top->data = deque->bottom->data;
-	deque->bottom->data = temp.data;
+	deque->top->data = deque->top->next->data;
+	deque->top->next->data = temp.data;
 }
 
 void	push_top(t_deque* deque, int data)
@@ -30,8 +30,62 @@ void	push_top(t_deque* deque, int data)
 
 	node = make_node(data);
 	if (deque->size == 0)
+	{
+		deque->top = node;
 		deque->bottom = node;
-	node->next = deque->top;
-	deque->top = node;
+	}
+	else
+	{
+		node->next = deque->top;
+		deque->top->prev = node;
+		deque->top = node;
+	}
 	deque->size++;
+}
+
+void	push_bottom(t_deque* deque, int data)
+{
+	t_element*	node;
+
+	node = make_node(data);
+	if (deque->size == 0)
+	{
+		deque->top = node;
+		deque->bottom = node;
+	}
+	else
+	{
+		node->prev = deque->bottom;		
+		deque->bottom->next = node;
+		deque->bottom = node;
+	}
+	deque->size++;
+}
+
+t_element*	pop_top(t_deque* deque)
+{
+	t_element* node;
+
+	if (deque->size == 0)
+		return (NULL);
+	node = deque->top;
+	deque->top = node->next;
+	deque->top->prev = NULL;
+	node->next = NULL;
+	deque->size--;
+	return (node);
+}
+
+t_element*	pop_bottom(t_deque* deque)
+{
+	t_element* node;
+
+	if (deque->size == 0)
+		return (NULL);
+	node = deque->bottom;
+	deque->bottom = node->prev;
+	node->prev = NULL;
+	deque->bottom->next = NULL;
+	deque->size--;
+	return (node);
 }
