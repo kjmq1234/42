@@ -6,7 +6,7 @@
 /*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:40:38 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/03 23:09:48 by jammin           ###   ########.fr       */
+/*   Updated: 2024/04/04 19:38:19 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,12 @@ void	sb(t_push_swap* set);
 void	ss(t_push_swap* set);
 void	pa(t_push_swap* set);
 void	pb(t_push_swap* set);
-
+void	ra(t_push_swap* set);
+void	rb(t_push_swap* set);
+void	rr(t_push_swap* set);
+void    rra(t_push_swap* set);
+void    rrb(t_push_swap* set);
+void    rrr(t_push_swap* set);
 
 t_element*	make_node(int data);
 
