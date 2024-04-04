@@ -6,7 +6,7 @@
 /*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:40:38 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/04 19:38:19 by jammin           ###   ########.fr       */
+/*   Updated: 2024/04/04 20:41:58 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	push_bottom(t_deque* deque, int data);
 void	push_top(t_deque* deque, int data);
 t_element*	pop_top(t_deque* deque);
 t_element*	pop_bottom(t_deque* deque);
+void	init_set(t_push_swap* set, t_deque* deque1, t_deque* deque2);
 
-void	set_ab(t_push_swap* set, t_deque* deque1, t_deque* deque2);
 
 void	sa(t_push_swap* set);
 void	sb(t_push_swap* set);

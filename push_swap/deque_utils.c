@@ -6,7 +6,7 @@
 /*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:49:13 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/03 22:55:33 by jammin           ###   ########.fr       */
+/*   Updated: 2024/04/04 20:38:27 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	push_top(t_deque* deque, int data)
 	else
 	{
 		node->next = deque->top;
-		deque->top->prev = node;
 		deque->top = node;
+		deque->top->next->prev = deque->top;
 	}
 	deque->size++;
 }
