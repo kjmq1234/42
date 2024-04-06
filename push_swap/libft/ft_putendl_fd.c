@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 01:01:55 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/10/31 21:00:39 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/12/24 02:49:41 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int	sum;
-	int	flag;
-
-	sum = 0;
-	flag = 1;
-	while (((*str >= 9) && (*str <= 13)) || (*str == ' '))
-		str++;
-	if (*str == '-')
+	if (!s)
+		return ;
+	if (fd < 1)
+		return ;
+	else
 	{
-		flag = -1;
-		str++;
+		write(fd, s, ft_strlen(s));
+		write(fd, "\n", 1);
 	}
-	else if (*str == '+')
-		str++;
-	while (ft_isdigit(*str))
-	{
-		sum = sum * 10 + (*str - 48);
-		str++;
-	}
-	return (flag * sum);
 }

@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 01:01:55 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/12/23 19:40:47 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/12/24 02:48:40 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	*ft_realloc(void *ptr, size_t size)
 {
-	int	sum;
-	int	flag;
+	void	*newptr;
 
-	sum = 0;
-	flag = 1;
-	while (((*str >= 9) && (*str <= 13)) || (*str == ' '))
-		str++;
-	if (*str == '-')
-	{
-		flag = -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (ft_isdigit(*str))
-	{
-		sum = sum * 10 + (*str - 48);
-		str++;
-	}
-	return (flag * sum);
+	if ((!ptr) || (size == 0))
+		return (0);
+	newptr = (void *) malloc(size);
+	ft_memmove(newptr, ptr, size);
+	free(ptr);
+	return (newptr);
 }

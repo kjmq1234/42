@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 01:01:55 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/10/31 17:52:38 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/11/04 16:55:21 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-int	ft_atoi(const char *str)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	int	sum;
-	int	flag;
+	unsigned char			*dststr;
+	unsigned const char		*srcstr;
 
-	sum = 0;
-	flag = 1;
-	while (((*str >= 9) && (*str <= 13)) || (*str == ' '))
-		str++;
-	if (*str == '-')
+	srcstr = (const unsigned char *)src;
+	dststr = (unsigned char *)dst;
+	if ((!dst) && (!src))
+		return (dst);
+	if (dst <= src)
 	{
-		flag = -1;
-		str++;
+		while (n--)
+			*dststr++ = *srcstr++;
 	}
-	else if (*str == '+')
-		str++;
-	while (ft_isdigit(*str))
+	else
 	{
-		sum = sum * 10 + (*str - 48);
-		str++;
+		dststr += (n - 1);
+		srcstr += (n - 1);
+		while (n--)
+			*dststr-- = *srcstr--;
 	}
-	return (flag * sum);
+	return (dst);
 }

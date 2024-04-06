@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 01:01:55 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/10/30 00:02:58 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/11/04 18:18:32 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-int	ft_atoi(const char *str)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	sum;
-	int	flag;
+	size_t	i;
+	void	*ptr;
 
-	sum = 0;
-	flag = 1;
-	while (((*str >= 9) && (*str <= 13)) || (*str == ' '))
-		str++;
-	if (*str == '-')
+	ptr = dst;
+	i = 0;
+	while (i < n)
 	{
-		flag = -1;
-		str++;
+		if (dst != src)
+		{
+			*(unsigned char *) dst = *(unsigned char *) src;
+			dst++;
+			src++;
+		}
+		i++;
 	}
-	else if (*str == '+')
-		str++;
-	while (ft_isdigit(*str))
-	{
-		sum = sum * 10 + (*str - 48);
-		str++;
-	}
-	return (flag * sum);
+	return (ptr);
 }

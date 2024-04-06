@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 01:01:55 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/10/31 21:49:21 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/12/24 02:43:38 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+t_list	*ft_lstnew(void *content)
 {
-	int	sum;
-	int	flag;
+	t_list	*newlst;
 
-	sum = 0;
-	flag = 1;
-	while (((*str >= 9) && (*str <= 13)) || (*str == ' '))
-		str++;
-	if (*str == '-')
-	{
-		flag = -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (ft_isdigit(*str))
-	{
-		sum = sum * 10 + (*str - 48);
-		str++;
-	}
-	return (flag * sum);
+	newlst = (t_list *) malloc(sizeof(t_list));
+	if (!newlst)
+		return (0);
+	newlst->content = content;
+	newlst->next = NULL;
+	return (newlst);
 }

@@ -6,16 +6,16 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 01:01:55 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/07 02:02:50 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
 int	ft_atoi(const char *str)
 {
-	int	sum;
-	int	flag;
+	long long	sum;
+	int			flag;
 
 	sum = 0;
 	flag = 1;
@@ -26,12 +26,16 @@ int	ft_atoi(const char *str)
 		flag = -1;
 		str++;
 	}
-	else if (*str == '+')
-		str++;
-	while (ft_isdigit(*str))
+	if(!*str)
+		error_print();
+	while (*str)
 	{
+		if (!ft_isdigit(*str))
+			error_print();
 		sum = sum * 10 + (*str - 48);
 		str++;
 	}
-	return (flag * sum);
+	if ((sum > 2147483647) || (sum < -2147483648))
+		error_print();
+	return ((int) flag * sum);
 }

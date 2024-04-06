@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:40:38 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/04 20:41:58 by jammin           ###   ########.fr       */
+/*   Updated: 2024/04/07 01:55:59 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "libft/libft.h"
 
 typedef struct s_element
 {
@@ -45,6 +46,7 @@ void	push_top(t_deque* deque, int data);
 t_element*	pop_top(t_deque* deque);
 t_element*	pop_bottom(t_deque* deque);
 void	init_set(t_push_swap* set, t_deque* deque1, t_deque* deque2);
+void	error_print(void);
 
 
 void	sa(t_push_swap* set);
@@ -60,5 +62,14 @@ void    rrb(t_push_swap* set);
 void    rrr(t_push_swap* set);
 
 t_element*	make_node(int data);
+
+int		count_args(int argc, char** argv);
+void	parse_arg_main(int argc, char** argv, t_push_swap* set);
+void	parsing_arg(int argc, char** argv, int* array);
+void	arg_into_stack(t_push_swap* set, int* array, int scale);
+void	ft_swap(int* a, int* b);
+void	exit_sorted_numbers(int* array);
+void	duplicate_check(int *array, int count);
+
 
 #endif

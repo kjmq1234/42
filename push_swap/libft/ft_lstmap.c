@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 01:01:55 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/11/02 23:50:36 by jam_min_2         #+#    #+#             */
+/*   Updated: 2023/12/24 02:43:34 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	sum;
-	int	flag;
+	t_list	*newlst;
+	t_list	*new;
+	void	*edit;
 
-	sum = 0;
-	flag = 1;
-	while (((*str >= 9) && (*str <= 13)) || (*str == ' '))
-		str++;
-	if (*str == '-')
+	newlst = NULL;
+	if ((!lst) || (!f) || (!del))
+		return (0);
+	while (lst)
 	{
-		flag = -1;
-		str++;
+		edit = f(lst->content);
+		new = ft_lstnew(edit);
+		if (!new)
+		{
+			del(edit);
+			ft_lstclear(&newlst, del);
+			return (0);
+		}
+		ft_lstadd_back(&newlst, new);
+		lst = lst->next;
 	}
-	else if (*str == '+')
-		str++;
-	while (ft_isdigit(*str))
-	{
-		sum = sum * 10 + (*str - 48);
-		str++;
-	}
-	return (flag * sum);
+	return (newlst);
 }

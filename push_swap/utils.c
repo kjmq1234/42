@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 01:01:55 by jaemikim         ###   ########.fr       */
+/*   Created: 2024/04/07 00:12:13 by jaemikim          #+#    #+#             */
+/*   Updated: 2024/04/07 01:57:36 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_atoi(const char *str)
+void	error_print(void)
 {
-	int	sum;
-	int	flag;
+	ft_putendl_fd("Error", 1);
+	exit(1);
+}
 
-	sum = 0;
-	flag = 1;
-	while (((*str >= 9) && (*str <= 13)) || (*str == ' '))
-		str++;
-	if (*str == '-')
-	{
-		flag = -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (ft_isdigit(*str))
-	{
-		sum = sum * 10 + (*str - 48);
-		str++;
-	}
-	return (flag * sum);
+void	ft_swap(int* a, int* b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b =tmp;
+}
+
+void	exit_sorted_numbers(int* array)
+{
+	free(array);
+	exit(0);
 }

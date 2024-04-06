@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 01:01:55 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/10/31 17:58:57 by jaemikim          #+#    #+#             */
+/*   Updated: 2023/12/24 02:45:35 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	sum;
-	int	flag;
+	char	*str;
+	size_t	slen;
 
-	sum = 0;
-	flag = 1;
-	while (((*str >= 9) && (*str <= 13)) || (*str == ' '))
-		str++;
-	if (*str == '-')
+	if (!s)
+		return (0);
+	if ((unsigned int) ft_strlen(s) < start)
+		return (ft_strdup(""));
+	s += start;
+	slen = ft_strlen(s);
+	if (slen >= len)
 	{
-		flag = -1;
-		str++;
+		str = (char *) malloc(sizeof(char) * (len + 1));
+		if (!str)
+			return (0);
+		ft_strlcpy(str, s, len + 1);
+		return (str);
 	}
-	else if (*str == '+')
-		str++;
-	while (ft_isdigit(*str))
-	{
-		sum = sum * 10 + (*str - 48);
-		str++;
-	}
-	return (flag * sum);
+	else
+		return (ft_strdup(s));
 }

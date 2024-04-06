@@ -7,8 +7,6 @@ int main(void)
     t_deque	deque1;
 	t_deque	deque2;
 	
-	init_deque(&deque1);
-	init_deque(&deque2);
     init_set(&set, &deque1, &deque2);
 
     // for (int i = 0; i < 10; i++)

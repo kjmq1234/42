@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 01:01:55 by jaemikim         ###   ########.fr       */
+/*   Created: 2023/11/02 23:58:28 by jam_min_2         #+#    #+#             */
+/*   Updated: 2023/12/24 02:43:09 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	sum;
-	int	flag;
+	t_list	*ptr;
+	t_list	*nextptr;
 
-	sum = 0;
-	flag = 1;
-	while (((*str >= 9) && (*str <= 13)) || (*str == ' '))
-		str++;
-	if (*str == '-')
+	if ((!lst) || (!del))
+		return ;
+	if (!*lst)
+		return ;
+	ptr = *lst;
+	while (ptr)
 	{
-		flag = -1;
-		str++;
+		nextptr = ptr->next;
+		ft_lstdelone(ptr, del);
+		ptr = nextptr;
 	}
-	else if (*str == '+')
-		str++;
-	while (ft_isdigit(*str))
-	{
-		sum = sum * 10 + (*str - 48);
-		str++;
-	}
-	return (flag * sum);
+	*lst = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deque_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:49:13 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/04 20:38:27 by jammin           ###   ########.fr       */
+/*   Updated: 2024/04/07 01:38:39 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,17 @@ t_element*	pop_top(t_deque* deque)
 	if (deque->size == 0)
 		return (NULL);
 	node = deque->top;
-	deque->top = node->next;
-	deque->top->prev = NULL;
-	node->next = NULL;
+	if (deque->size == 1)
+	{
+		deque->top = NULL;
+		deque->bottom = NULL;
+	}
+	else
+	{
+		deque->top = node->next;
+		deque->top->prev = NULL;
+		node->next = NULL;
+	}
 	deque->size--;
 	return (node);
 }
@@ -83,9 +91,17 @@ t_element*	pop_bottom(t_deque* deque)
 	if (deque->size == 0)
 		return (NULL);
 	node = deque->bottom;
-	deque->bottom = node->prev;
-	node->prev = NULL;
-	deque->bottom->next = NULL;
+	if (deque->size == 1)
+	{
+		deque->top = NULL;
+		deque->bottom = NULL;
+	}
+	else
+	{
+		deque->bottom = node->prev;
+		node->prev = NULL;
+		deque->bottom->next = NULL;
+	}
 	deque->size--;
 	return (node);
 }
