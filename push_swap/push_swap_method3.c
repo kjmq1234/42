@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_method3.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 19:24:31 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/04 19:34:31 by jammin           ###   ########.fr       */
+/*   Updated: 2024/04/10 00:19:56 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void    rra(t_push_swap* set)
 	node = pop_bottom(set->a);
 	push_top(set->a, node->data);
 	free(node);
+	ft_putendl_fd("rra", 1);
 }
 
 void    rrb(t_push_swap* set)
@@ -36,10 +37,12 @@ void    rrb(t_push_swap* set)
 	node = pop_bottom(set->b);
 	push_top(set->b, node->data);
 	free(node);
+	ft_putendl_fd("rrb", 1);
 }
 
 void rrr(t_push_swap* set)
 {
     rra(set);
     rrb(set);
+	ft_putendl_fd("rrr", 1);
 }

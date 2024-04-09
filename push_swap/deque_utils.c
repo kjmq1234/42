@@ -6,22 +6,21 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:49:13 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/07 01:38:39 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/10 00:52:34 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_deque* deque)
+void	stack_swap(t_deque* deque)
 {
 	t_element temp;
 
 	if (deque->size < 2)
 		return ;
 
-	temp.data = deque->top->data;
-	deque->top->data = deque->top->next->data;
-	deque->top->next->data = temp.data;
+	ft_swap(&deque->top->data, &deque->top->next->data);
+	ft_swap(&deque->top->index, &deque->top->next->index);
 }
 
 void	push_top(t_deque* deque, int data)

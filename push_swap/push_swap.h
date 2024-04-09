@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:40:38 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/09 21:48:39 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/10 00:52:57 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_push_swap
 
 
 void	init_deque(t_deque* deque);
-void	swap(t_deque* deque);
+void	stack_swap(t_deque* deque);
 void	push_bottom(t_deque* deque, int data);
 void	push_top(t_deque* deque, int data);
 t_element*	pop_top(t_deque* deque);
@@ -72,5 +72,9 @@ void	ft_swap(int* a, int* b);
 void	exit_sorted_numbers(int* array);
 void	duplicate_check(int *array, int count);
 void	add_index(int* array, t_deque* deque);
+
+void	sort_2(t_push_swap *set);
+void	sort_3(t_push_swap *set);
+void	sort_main(t_push_swap* set);
 
 #endif
