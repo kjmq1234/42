@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/03 17:54:22 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/09 21:50:37 by jaemikim         ###   ########.fr       */
+/*   Created: 2024/04/09 21:30:43 by jaemikim          #+#    #+#             */
+/*   Updated: 2024/04/09 21:47:53 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "stdio.h"
-int	main(int argc, char* argv[])
+
+void	add_index(int* array, t_deque* deque)
 {
-	t_deque deque_a;
-	t_deque deque_b;
-	t_push_swap push_swap;
-	
-	init_set(&push_swap, &deque_a, &deque_b);
-	parse_arg_main(argc, argv, &push_swap);
-	printf("%d %d %d %d", push_swap.a->top->index, push_swap.a->top->next->index, push_swap.a->top->next->next->index, push_swap.a->top->next->next->next->index);
+	int			i;
+	t_element*	que;
+
+	i = 0;
+	while (array[i])
+	{
+		que = deque->top;
+		while (que)
+		{
+			if (que->data == array[i])
+			{
+				que->index = i;
+				break;
+			}
+			que = que->next;
+		}
+		i++;
+	}
 }

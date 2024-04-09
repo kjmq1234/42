@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   parsing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 23:59:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/07 02:04:32 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/09 21:32:19 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@ void	parse_arg_main(int argc, char **argv, t_push_swap *set)
 	int	count;
 
 	count = count_args(argc, argv);
-	// if (count == 1)
-	// 	exit(1);
 	array = (int *) malloc(sizeof(int) * count);
 	if (!array)
 		return ;
 	parsing_arg(argc, argv, array);
 	arg_into_stack(set, array, count);
 	duplicate_check(array, count);
+	add_index(array, set->a);
 }
 
 void	arg_into_stack(t_push_swap *set, int *array, int scale)

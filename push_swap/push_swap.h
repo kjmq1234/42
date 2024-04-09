@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:40:38 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/07 01:55:59 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/09 21:48:39 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ typedef struct s_element
 {
     struct s_element*	next;
     struct s_element*	prev;
-	int			data;
+	int					data;
+	int					index;
 } t_element;
 
 typedef struct s_deque
@@ -70,6 +71,6 @@ void	arg_into_stack(t_push_swap* set, int* array, int scale);
 void	ft_swap(int* a, int* b);
 void	exit_sorted_numbers(int* array);
 void	duplicate_check(int *array, int count);
-
+void	add_index(int* array, t_deque* deque);
 
 #endif
