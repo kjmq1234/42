@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 21:30:43 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/09 21:47:53 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/10 12:24:56 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,11 @@ void	add_index(int* array, t_deque* deque)
 		}
 		i++;
 	}
+	// 	t_element* a;
+	// 	a = deque->top;
+	// while (a)
+	// {
+	// 	printf("data: %d index: %d\n", a->data, a->index);
+	// 	a = a->next;
+	// }
 }

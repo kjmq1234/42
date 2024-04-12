@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:40:38 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/10 00:52:57 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/13 04:06:24 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
+
+#include "stdio.h"
 
 typedef struct s_element
 {
@@ -63,9 +65,10 @@ void    rrb(t_push_swap* set);
 void    rrr(t_push_swap* set);
 
 t_element*	make_node(int data);
+void	free_stack(t_deque* stack);
 
 int		count_args(int argc, char** argv);
-void	parse_arg_main(int argc, char** argv, t_push_swap* set);
+int		parse_arg_main(int argc, char** argv, t_push_swap* set);
 void	parsing_arg(int argc, char** argv, int* array);
 void	arg_into_stack(t_push_swap* set, int* array, int scale);
 void	ft_swap(int* a, int* b);
@@ -75,6 +78,11 @@ void	add_index(int* array, t_deque* deque);
 
 void	sort_2(t_push_swap *set);
 void	sort_3(t_push_swap *set);
-void	sort_main(t_push_swap* set);
+void	sort_4(t_push_swap *set);
+void	sort_over5(t_push_swap* set, int chunk);
+void	sort_main(t_push_swap* set, int chunk);
+void	a_to_b(t_push_swap* set, int chunk);
+void	b_to_a(t_push_swap* set);
+int		wordcnt(char const *s, char c);
 
 #endif

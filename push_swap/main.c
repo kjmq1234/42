@@ -6,19 +6,32 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:54:22 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/10 00:22:36 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/13 04:58:55 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "stdio.h"
+
+void   check_leak(void)
+{
+		system("leaks push_swap");
+}
+
 int	main(int argc, char* argv[])
 {
 	t_deque deque_a;
 	t_deque deque_b;
 	t_push_swap push_swap;
+	int			chunk;
+	int			count;
 	
 	init_set(&push_swap, &deque_a, &deque_b);
-	parse_arg_main(argc, argv, &push_swap);
-	sort_main(&push_swap);
+	count = parse_arg_main(argc, argv, &push_swap);
+	chunk = 15;
+	chunk = (count * count * 0.000000053) + (count * 0.03) + 14.5; 
+	sort_main(&push_swap, chunk);
+	free_stack(push_swap.a);
+
+	atexit(check_leak);
+	check_leak();
 }
