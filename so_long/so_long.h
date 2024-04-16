@@ -1,7 +1,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "mlx/mlx.h"
+# include "mlx.h"
 # include "libft/libft.h"
 // # include "libftprintf/ft_printf.h"
 # include "get_next_line_bonus.h"

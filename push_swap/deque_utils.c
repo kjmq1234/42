@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:49:13 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/16 21:52:01 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 23:15:31 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	stack_swap(t_deque *deque)
 {
-	t_element	temp;
-
 	if (deque->size < 2)
 		return ;
 	ft_swap(&deque->top->data, &deque->top->next->data);
