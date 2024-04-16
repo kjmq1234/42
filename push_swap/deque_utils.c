@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:49:13 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/10 00:52:34 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:22:46 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	stack_swap(t_deque* deque)
 	ft_swap(&deque->top->index, &deque->top->next->index);
 }
 
-void	push_top(t_deque* deque, int data)
+void	push_top(t_deque* deque, int data, int index)
 {
 	t_element*	node;
 
-	node = make_node(data);
+	node = make_node(data, index);
 	if (deque->size == 0)
 	{
 		deque->top = node;
@@ -42,11 +42,11 @@ void	push_top(t_deque* deque, int data)
 	deque->size++;
 }
 
-void	push_bottom(t_deque* deque, int data)
+void	push_bottom(t_deque* deque, int data, int index)
 {
 	t_element*	node;
 
-	node = make_node(data);
+	node = make_node(data, index);
 	if (deque->size == 0)
 	{
 		deque->top = node;

@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 18:17:26 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/07 00:17:58 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:23:02 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_set(t_push_swap* set, t_deque* deque1, t_deque* deque2)
 	set->b = deque2;
 }
 
-t_element*	make_node(int data1)
+t_element*	make_node(int data1, int index1)
 {
 	t_element*	node;
 
@@ -35,6 +35,7 @@ t_element*	make_node(int data1)
 	if(!node)
 		exit(1);
 	node->data = data1;
+	node->index = index1;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);

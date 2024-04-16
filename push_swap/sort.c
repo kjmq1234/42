@@ -6,13 +6,13 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:20:18 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/13 04:49:08 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:36:01 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_main(t_push_swap* set, int chunk)
+void	sort_main(t_push_swap* set, float chunk)
 {
 	if (set->a->size == 2)
 		sort_2(set);
@@ -22,35 +22,35 @@ void	sort_main(t_push_swap* set, int chunk)
 		sort_over5(set, chunk);
 }
 
-void	sort_over5(t_push_swap* set, int chunk)
+void	sort_over5(t_push_swap* set, float chunk)
 {
 	a_to_b(set, chunk);
 	b_to_a(set);
 }
-void	a_to_b(t_push_swap* set, int chunk)
+void	a_to_b(t_push_swap* set, float chunk)
 {
 	int	i;
+	int value;
+	int	sacle = set->a->size;
 
 	i = 0;
-	while (set->a->size != 0)
+	while (i < sacle)
 	{
-		if (set->a->top->index <= i)
+		value = set -> a -> top -> index;
+		if (value <= i)
 		{
 			pb(set);
 			i++;
 		}
-			else if ((set->a->top->index > i) && (set->a->top->index <= i + chunk))
+		else if ((value > i) && (value <= i + chunk))
 		{
 			pb(set);
 			rb(set);
 			i++;
 		}
-		else 
+		else if (value > chunk + i)
 		{
-			if (i < set->a->size / 2)
-				rra(set);
-			else
-				ra(set);
+			ra(set);
 		}
 	}
 }

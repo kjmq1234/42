@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 19:24:31 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/10 00:19:56 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:15:35 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void    rra(t_push_swap* set)
 	if (set->a->size < 2)
 		return ;
 	node = pop_bottom(set->a);
-	push_top(set->a, node->data);
+	push_top(set->a, node->data, node->index);
 	free(node);
 	ft_putendl_fd("rra", 1);
 }
@@ -35,7 +35,7 @@ void    rrb(t_push_swap* set)
 	if (set->b->size < 2)
 		return ;
 	node = pop_bottom(set->b);
-	push_top(set->b, node->data);
+	push_top(set->b, node->data, node->index);
 	free(node);
 	ft_putendl_fd("rrb", 1);
 }

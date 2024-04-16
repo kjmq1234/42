@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 23:59:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/13 04:58:16 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:16:08 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	parse_arg_main(int argc, char **argv, t_push_swap *set)
 	parsing_arg(argc, argv, array);
 	arg_into_stack(set, array, count);
 	duplicate_check(array, count);
-	add_index(array, set->a);
+	add_index(array, set);
 	free(array);
 	return (count);
 }
@@ -36,7 +36,7 @@ void	arg_into_stack(t_push_swap *set, int *array, int scale)
 	i = 0;
 	while (i < scale)
 	{
-		push_bottom(set->a, array[i]);
+		push_bottom(set->a, array[i], 0);
 		i++;
 	}
 }
