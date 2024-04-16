@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:54:22 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/16 21:44:46 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 22:31:18 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void   check_leak(void)
 
 int	main(int argc, char* argv[])
 {
-	t_deque deque_a;
-	t_deque deque_b;
+	t_deque 	deque_a;
+	t_deque 	deque_b;
 	t_push_swap push_swap;
 	float		chunk;
 	int			count;

@@ -6,15 +6,15 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 19:12:53 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/16 15:15:21 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 21:59:03 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_push_swap* set)
+void	ra(t_push_swap *set)
 {
-	t_element*	node;
+	t_element	*node;
 	int			i;
 
 	i = 1;
@@ -26,9 +26,9 @@ void	ra(t_push_swap* set)
 	ft_putendl_fd("ra", 1);
 }
 
-void	rb(t_push_swap* set)
+void	rb(t_push_swap *set)
 {
-	t_element*	node;
+	t_element	*node;
 	int			i;
 
 	i = 1;
@@ -40,7 +40,7 @@ void	rb(t_push_swap* set)
 	ft_putendl_fd("rb", 1);
 }
 
-void	rr(t_push_swap* set)
+void	rr(t_push_swap *set)
 {
 	ra(set);
 	rb(set);

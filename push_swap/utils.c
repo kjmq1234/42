@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 00:12:13 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/16 21:24:17 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 22:28:28 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,26 @@ void	error_print(void)
 	exit(1);
 }
 
-void	ft_swap(int* a, int* b)
+void	ft_swap(int *a, int *b)
 {
 	int	tmp;
 
 	tmp = *a;
 	*a = *b;
-	*b =tmp;
+	*b = tmp;
 }
 
-void	exit_sorted_numbers(int* array, t_push_swap *set)
+void	exit_sorted_numbers(int *array, t_push_swap *set)
 {
 	free_stack(set->a);
 	free(array);
 	exit(0);
 }
 
-void	free_stack(t_deque* stack)
+void	free_stack(t_deque *stack)
 {
-	t_element* tmp;
-	t_element* tmp1;
+	t_element	*tmp;
+	t_element	*tmp1;
 
 	if (stack->top == NULL)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 23:59:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/16 21:45:11 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 21:54:53 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	parse_arg_main(int argc, char **argv, t_push_swap *set)
 	count = count_args(argc, argv);
 	array = (int *) malloc(sizeof(int) * count);
 	if (!array)
-		exit(1) ;
+		exit(1);
 	parsing_arg(argc, argv, array);
 	arg_into_stack(set, array, count);
 	duplicate_check(array, count, set);
@@ -85,7 +85,7 @@ int	count_args(int argc, char **argv)
 	return (cnt);
 }
 
-void	duplicate_check(int *array, int count, t_push_swap* set)
+void	duplicate_check(int *array, int count, t_push_swap *set)
 {
 	int	i;
 	int	j;

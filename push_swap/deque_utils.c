@@ -6,26 +6,25 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:49:13 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/16 15:22:46 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 21:52:01 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_swap(t_deque* deque)
+void	stack_swap(t_deque *deque)
 {
-	t_element temp;
+	t_element	temp;
 
 	if (deque->size < 2)
 		return ;
-
 	ft_swap(&deque->top->data, &deque->top->next->data);
 	ft_swap(&deque->top->index, &deque->top->next->index);
 }
 
-void	push_top(t_deque* deque, int data, int index)
+void	push_top(t_deque *deque, int data, int index)
 {
-	t_element*	node;
+	t_element	*node;
 
 	node = make_node(data, index);
 	if (deque->size == 0)
@@ -42,9 +41,9 @@ void	push_top(t_deque* deque, int data, int index)
 	deque->size++;
 }
 
-void	push_bottom(t_deque* deque, int data, int index)
+void	push_bottom(t_deque *deque, int data, int index)
 {
-	t_element*	node;
+	t_element	*node;
 
 	node = make_node(data, index);
 	if (deque->size == 0)
@@ -54,16 +53,16 @@ void	push_bottom(t_deque* deque, int data, int index)
 	}
 	else
 	{
-		node->prev = deque->bottom;		
+		node->prev = deque->bottom;
 		deque->bottom->next = node;
 		deque->bottom = node;
 	}
 	deque->size++;
 }
 
-t_element*	pop_top(t_deque* deque)
+t_element	*pop_top(t_deque *deque)
 {
-	t_element* node;
+	t_element	*node;
 
 	if (deque->size == 0)
 		return (NULL);
@@ -83,9 +82,9 @@ t_element*	pop_top(t_deque* deque)
 	return (node);
 }
 
-t_element*	pop_bottom(t_deque* deque)
+t_element	*pop_bottom(t_deque *deque)
 {
-	t_element* node;
+	t_element	*node;
 
 	if (deque->size == 0)
 		return (NULL);
