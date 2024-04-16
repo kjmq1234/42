@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 23:59:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/16 19:25:56 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 21:45:11 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	parse_arg_main(int argc, char **argv, t_push_swap *set)
 	if (!array)
 		exit(1) ;
 	parsing_arg(argc, argv, array);
-	duplicate_check(array, count);
 	arg_into_stack(set, array, count);
+	duplicate_check(array, count, set);
 	add_index(array, set);
 	free(array);
 	return (count);
@@ -85,7 +85,7 @@ int	count_args(int argc, char **argv)
 	return (cnt);
 }
 
-void	duplicate_check(int *array, int count)
+void	duplicate_check(int *array, int count, t_push_swap* set)
 {
 	int	i;
 	int	j;
@@ -110,5 +110,5 @@ void	duplicate_check(int *array, int count)
 		i++;
 	}
 	if (!swap_cnt)
-		exit_sorted_numbers(array);
+		exit_sorted_numbers(array, set);
 }

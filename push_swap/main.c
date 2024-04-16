@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:54:22 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/16 19:25:28 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 21:44:46 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int	main(int argc, char* argv[])
 	free_stack(push_swap.a);
 	free_stack(push_swap.b);
 
-	// check_leak();
+	// atexit(check_leak);
+	// system("leaks push_swap");
 }

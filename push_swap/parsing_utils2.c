@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 21:30:43 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/16 15:27:12 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 21:21:10 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	add_index(int* array, t_push_swap* set)
 	t_element*	que;
 
 	i = 0;
-	while (array[i])
+	while (i < set->a->size)
 	{
 		que = set->a->top;
-		while (que)
+		while (que->next)
 		{
 			if (que->data == array[i])
 			{
@@ -30,13 +30,8 @@ void	add_index(int* array, t_push_swap* set)
 			}
 			que = que->next;
 		}
+		if (que->data == array[i])
+			que->index = i;
 		i++;
 	}
-	// 	t_element* a;
-	// 	a = deque->top;
-	// while (a)
-	// {
-	// 	printf("data: %d index: %d\n", a->data, a->index);
-	// 	a = a->next;
-	// }
 }

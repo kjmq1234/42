@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:40:38 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/16 19:28:45 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 21:23:37 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,11 @@ int			parse_arg_main(int argc, char** argv, t_push_swap* set);
 void		parsing_arg(int argc, char** argv, int* array);
 void		arg_into_stack(t_push_swap* set, int* array, int scale);
 void		ft_swap(int* a, int* b);
-void		exit_sorted_numbers(int* array);
-void		duplicate_check(int *array, int count);
+void		exit_sorted_numbers(int* array, t_push_swap *set);
+void		duplicate_check(int *array, int count, t_push_swap* set);
 void		add_index(int* array, t_push_swap* set);
 void		sort_2(t_push_swap *set);
 void		sort_3(t_push_swap *set);
-void		sort_4(t_push_swap *set);
 void		sort_over5(t_push_swap* set, float chunk);
 void		sort_main(t_push_swap* set, float chunk);
 void		a_to_b(t_push_swap* set, float chunk);

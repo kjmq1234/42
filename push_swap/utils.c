@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 00:12:13 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/16 19:07:40 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 21:24:17 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void	ft_swap(int* a, int* b)
 	*b =tmp;
 }
 
-void	exit_sorted_numbers(int* array)
+void	exit_sorted_numbers(int* array, t_push_swap *set)
 {
+	free_stack(set->a);
 	free(array);
 	exit(0);
 }
