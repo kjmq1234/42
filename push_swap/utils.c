@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 00:12:13 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/13 04:53:32 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:07:40 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	error_print(void)
 {
 	ft_putendl_fd("Error", 1);
-	// exit(1);
+	exit(1);
 }
 
 void	ft_swap(int* a, int* b)
@@ -36,15 +36,17 @@ void	exit_sorted_numbers(int* array)
 void	free_stack(t_deque* stack)
 {
 	t_element* tmp;
+	t_element* tmp1;
 
+	if (stack->top == NULL)
+		return ;
 	tmp = stack->top;
-	while (tmp->next)
+	while (tmp)
 	{
-		tmp = tmp->next;
-		free(tmp->prev);
-		tmp->prev = NULL;
+		tmp1 = tmp->next;
+		free(tmp);
+		tmp = tmp1;
 	}
-	free(tmp);
 }
 
 int	wordcnt(char const *s, char c)

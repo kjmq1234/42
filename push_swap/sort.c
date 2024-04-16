@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:20:18 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/16 16:36:01 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:24:23 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	sort_main(t_push_swap* set, float chunk)
 		sort_2(set);
 	else if (set->a->size == 3)
 		sort_3(set);
+	// else if (set->a->size == 4)
+	// 	sort_4(set);
 	else
 		sort_over5(set, chunk);
 }
@@ -31,10 +33,11 @@ void	a_to_b(t_push_swap* set, float chunk)
 {
 	int	i;
 	int value;
-	int	sacle = set->a->size;
-
+	int	scale;
+	
+	scale = set->a->size;
 	i = 0;
-	while (i < sacle)
+	while (i < scale)
 	{
 		value = set -> a -> top -> index;
 		if (value <= i)
@@ -49,18 +52,25 @@ void	a_to_b(t_push_swap* set, float chunk)
 			i++;
 		}
 		else if (value > chunk + i)
-		{
 			ra(set);
-		}
 	}
 }
 
 void	b_to_a(t_push_swap* set)
 {
-	while (set->b->size != 0)
+	int	scale;
+	int	i;
+
+	scale = set->b->size;
+	i = scale - 1;
+	while (i >= 0)
 	{
-		if (set->b->top->index < set->b->bottom->index)
-			rrb(set);
-		pa(set);
+		if (set->b->top->index == i)
+		{
+			pa(set);
+			i--;
+		}
+		else
+			change_top(set, i);
 	}
 }

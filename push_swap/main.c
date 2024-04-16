@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:54:22 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/16 15:02:10 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:25:28 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	main(int argc, char* argv[])
 	
 	init_set(&push_swap, &deque_a, &deque_b);
 	count = parse_arg_main(argc, argv, &push_swap);
-	chunk = (count * count * 0.000000053) + (count * 0.03) + 14.5; 
+	chunk = (count * count * 0.000000053) + (count * 0.03) + 14.5;
 	sort_main(&push_swap, chunk);
 	free_stack(push_swap.a);
+	free_stack(push_swap.b);
 
-	atexit(check_leak);
-	check_leak();
+	// check_leak();
 }
