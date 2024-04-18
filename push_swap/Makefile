@@ -15,7 +15,10 @@ SRCS = init_data.c \
 	   parsing_utils2.c \
 	   sort_utils.c \
 	   sort.c \
-	   utils.c 
+	   utils.c \
+	   hard_sort_utils4.c \
+	   hard_sort_utils5.c \
+	
 
 OBJS = $(SRCS:.c=.o)
 

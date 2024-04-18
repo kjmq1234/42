@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 02:41:46 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/13 04:56:11 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:25:56 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_atoi(const char *str)
 		flag = -1;
 		str++;
 	}
-	if(!*str)
+	if (!*str)
 		error_print();
 	while (*str)
 	{

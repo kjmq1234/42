@@ -6,15 +6,13 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 17:40:38 by jammin            #+#    #+#             */
-/*   Updated: 2024/04/16 22:26:07 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:06:36 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <unistd.h>
-# include <stdlib.h>
 # include "libft/libft.h"
 
 typedef struct s_element
@@ -76,5 +74,14 @@ void		b_to_a(t_push_swap *set);
 int			wordcnt(char const *s, char c);
 int			search_location(t_push_swap *set, int index);
 void		change_top(t_push_swap *set, int i);
+void		sort_4(t_push_swap *set);
+void		sort_4_2(t_push_swap *set);
+void		sort_4_3(t_push_swap *set);
+void		sort_4_4(t_push_swap *set);
+void		sort_5(t_push_swap *set);
+void		sort_5_2(t_push_swap *set);
+void		sort_5_3(t_push_swap *set);
+void		sort_5_4(t_push_swap *set);
+void		sort_5_5(t_push_swap *set);
 
 #endif

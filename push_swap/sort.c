@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:20:18 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/16 22:27:46 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:06:12 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void	sort_main(t_push_swap *set, float chunk)
 		sort_2(set);
 	else if (set->a->size == 3)
 		sort_3(set);
+	else if (set->a->size == 4)
+		sort_4(set);
+	else if (set->a->size == 5)
+		sort_5(set);
 	else
 		sort_over5(set, chunk);
 }

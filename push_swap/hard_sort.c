@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 23:37:14 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/16 21:45:06 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:15:49 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,52 @@ void	sort_3(t_push_swap *set)
 		rra(set);
 }
 
+void	sort_4(t_push_swap *set)
+{
+	int	a_one;
+	int	a_two;
+	int	a_three;
+	int	b_top;
 
-// void	sort_5(t_push_swap *set)
-// {
-	
-// }
+	pb(set);
+	sort_3(set);
+	a_one = set->a->top->data;
+	a_two = set->a->top->next->data;
+	a_three = set->a->bottom->data;
+	b_top = set->b->top->data;
+	if (b_top < a_one)
+		pa(set);
+	else if ((b_top > a_one) && (b_top < a_two))
+		sort_4_2(set);
+	else if ((b_top > a_two) && (b_top < a_three))
+		sort_4_3(set);
+	else if(b_top > a_three)
+		sort_4_4(set);
+}
+
+void	sort_5(t_push_swap *set)
+{
+	int	a_one;
+	int	a_two;
+	int	a_three;
+	int	a_four;
+	int	b_top;
+
+	pb(set);
+	sort_4(set);
+	a_one = set->a->top->data;
+	a_two = set->a->top->next->data;
+	a_three = set->a->top->next->next->data;
+	a_four = set->a->bottom->data;
+	b_top = set->b->top->data;
+	if (b_top < a_one)
+		pa(set);
+	else if ((b_top > a_one) && (b_top < a_two))
+		sort_5_2(set);
+	else if ((b_top > a_two) && (b_top < a_three))
+		sort_5_3(set);
+	else if ((b_top > a_three) && (b_top < a_four))
+		sort_5_4(set);
+	else if (b_top > a_four)
+		sort_5_5(set);
+}
