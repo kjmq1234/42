@@ -21,7 +21,7 @@ void exit_open(void)
 	exit(1);
 }
 
-char** copy_map(char** map, t_map info)
+char** copy_map(char** map, t_game info)
 {
 	unsigned long long	i;
 	char**				copy;
@@ -38,7 +38,7 @@ char** copy_map(char** map, t_map info)
 	return (copy);
 }
 
-void free_maps(char** map, t_map info)
+void free_maps(char** map, t_game info)
 {
 	unsigned long long i;
 

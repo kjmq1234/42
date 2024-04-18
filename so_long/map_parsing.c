@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hard_sort_utils4.c                                 :+:      :+:    :+:   */
+/*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 18:39:59 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/18 19:34:41 by jaemikim         ###   ########.fr       */
+/*   Created: 2024/04/18 20:27:40 by jaemikim          #+#    #+#             */
+/*   Updated: 2024/04/18 21:13:28 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "so_long.h"
 
-void	sort_4_2(t_push_swap *set)
+void	parsing_main(char *argv, t_game *map_info)
 {
-	pa(set);
-	sa(set);
-}
-
-void	sort_4_3(t_push_swap *set)
-{
-	rra(set);
-	pa(set);
-	ra(set);
-	ra(set);
-}
-
-void	sort_4_4(t_push_swap *set)
-{
-	pa(set);
-	ra(set);
+    parse_mapinfo(argv, map_info);
+	map_info->map = malloc_map(*map_info);
+	read_map(argv, map_info->map, *map_info);
+	parse_map_element(map_info->map, map_info);
+	if(!valid_check(map_info->map, map_info))
+		exit(1);
 }

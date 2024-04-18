@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 23:37:14 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/18 19:15:49 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:51:55 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	sort_4(t_push_swap *set)
 		sort_4_2(set);
 	else if ((b_top > a_two) && (b_top < a_three))
 		sort_4_3(set);
-	else if(b_top > a_three)
+	else if (b_top > a_three)
 		sort_4_4(set);
 }
 

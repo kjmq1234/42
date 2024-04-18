@@ -6,10 +6,12 @@ RM = rm -f
 SRCS = get_next_line_bonus.c \
 	get_next_line_utils_bonus.c \
 	init_data.c \
-	map_utils.c \
+	map_parsing_utils.c \
 	map_valid.c \
 	utils.c \
-	main.c
+	main.c \
+	map_parsing.c \
+	make_window.c
 
 INC_DIR = include
 LIB_DIR = libft

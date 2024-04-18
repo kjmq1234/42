@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_valid.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/18 20:21:32 by jaemikim          #+#    #+#             */
+/*   Updated: 2024/04/18 21:12:51 by jaemikim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-int	valid_check(char **map, t_map* map_info)
+int	valid_check(char **map, t_game* map_info)
 {
 	if ((!edge_valid(map, *map_info)) | (!element_valid(*map_info)) | ((!road_valid(map, *map_info))))
 		return(0);
 	return (1);
 }
 
-int	element_valid(t_map map_info)
+int	element_valid(t_game map_info)
 {
 	if ((map_info.c_num == 0) || (map_info.p_num != 1) || (map_info.e_num != 1))
 	{
@@ -26,7 +38,7 @@ int	element_valid(t_map map_info)
 	return (1);
 }
 
-int	edge_valid(char **map, t_map map_info)
+int	edge_valid(char **map, t_game map_info)
 {
 	unsigned long long	hei;
 	unsigned long long	wid;
@@ -50,7 +62,7 @@ int	edge_valid(char **map, t_map map_info)
 	return (1);
 }
 
-unsigned int	search_item_valid(char **map,t_map map_info, int x, int y, char item)
+unsigned int	search_item_valid(char **map,t_game map_info, int x, int y, char item)
 {
 	int	cnt;
 
@@ -59,7 +71,7 @@ unsigned int	search_item_valid(char **map,t_map map_info, int x, int y, char ite
 		return (0);
 	if (map[y][x] == item)
 	{
-		map[y][x] = 'V';
+		map[y][x] = 'c';
 		return (1);
 	}
 	map[y][x] = 'V';
@@ -81,7 +93,7 @@ int name_valid(char* name)
 	return(ft_strncmp(dot, ".ber\0", 5));
 }
 
-int road_valid(char **map, t_map map_info)
+int road_valid(char **map, t_game map_info)
 {
 	char	**e_map;
 	char	**c_map;

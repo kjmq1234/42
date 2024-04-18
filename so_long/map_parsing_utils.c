@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parsing_utils.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/18 20:29:17 by jaemikim          #+#    #+#             */
+/*   Updated: 2024/04/18 21:12:45 by jaemikim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void	parse_mapinfo(char *file, t_map* map_info)
+void	parse_mapinfo(char *file, t_game* map_info)
 {
     int		fd;
 	char*	line;
@@ -27,7 +39,7 @@ void	parse_mapinfo(char *file, t_map* map_info)
 	}
 }
 
-char	**malloc_map(t_map map_info)
+char	**malloc_map(t_game map_info)
 {
 	char**				map;
 	unsigned long long	i;
@@ -46,7 +58,7 @@ char	**malloc_map(t_map map_info)
 	return (map);
 }
 
-void	parse_map_element(char **map, t_map* map_info)
+void	parse_map_element(char **map, t_game* map_info)
 {
 	unsigned long long	hei;
 	unsigned long long	wid;
@@ -74,7 +86,7 @@ void	parse_map_element(char **map, t_map* map_info)
 	}
 }
 
-void	read_map(char *file, char **map, t_map map_info)
+void	read_map(char *file, char **map, t_game map_info)
 {
 	int					fd;
 	unsigned long long	i;
