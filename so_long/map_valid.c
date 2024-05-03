@@ -6,16 +6,17 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:21:32 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/18 21:12:51 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/04 03:13:32 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	valid_check(char **map, t_game* map_info)
+int	valid_check(char **map, t_game *map_info)
 {
-	if ((!edge_valid(map, *map_info)) | (!element_valid(*map_info)) | ((!road_valid(map, *map_info))))
-		return(0);
+	if ((!edge_valid(map, *map_info)) | (!element_valid(*map_info)) \
+	| ((!road_valid(map, *map_info))))
+		return (0);
 	return (1);
 }
 
@@ -49,7 +50,9 @@ int	edge_valid(char **map, t_game map_info)
 	{
 		while (wid < map_info.width)
 		{
-			if ((map[hei][wid] != '1') && ((hei == 0) || (hei == map_info.height - 1) || (wid == map_info.width - 1) || (wid == 0)))
+			if ((map[hei][wid] != '1') && ((hei == 0) || \
+			(hei == map_info.height - 1) || (wid == map_info.width - 1) \
+			|| (wid == 0)))
 			{
 				printf("Error\n벽에 문제가 있습니다.\n");
 				return (0);
@@ -62,7 +65,7 @@ int	edge_valid(char **map, t_game map_info)
 	return (1);
 }
 
-unsigned int	search_item_valid(char **map,t_game map_info, int x, int y, char item)
+unsigned int	search_item_valid(char **map, t_game map_info, int x, int y, char item)
 {
 	int	cnt;
 
@@ -83,17 +86,17 @@ unsigned int	search_item_valid(char **map,t_game map_info, int x, int y, char it
 	return (cnt);
 }
 
-int name_valid(char* name)
+int	name_valid(char *name)
 {
-	char*	dot;
+	char	*dot;
 
 	if (ft_strrchr(name, '.') == 0)
 		return (1);
 		dot = ft_strrchr(name, '.');
-	return(ft_strncmp(dot, ".ber\0", 5));
+	return (ft_strncmp(dot, ".ber\0", 5));
 }
 
-int road_valid(char **map, t_game map_info)
+int	road_valid(char **map, t_game map_info)
 {
 	char	**e_map;
 	char	**c_map;

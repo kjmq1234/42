@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   key_control.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/04 03:04:43 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/04 03:04:44 by jaemikim         ###   ########.fr       */
+/*   Created: 2024/04/23 23:31:27 by jaemikim          #+#    #+#             */
+/*   Updated: 2024/05/04 03:17:54 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	leak()
+int	press_x_button(t_game *game_info)
 {
-	system("leaks so_long");
+	unsigned long long	i;
+
+	i = 0;
+	free_maps(game_info->map, *game_info);
+	exit(EXIT_SUCCESS);
 }
 
-int	main(int argc, char *argv[])
+int	move_key(int key, t_game *game_info)
 {
-	t_game 	game_info;
-	
-	if (argc != 2)
+	if (key == KEY_ESC)
 	{
-		printf("맵을 넣어주세요.");
-		return (0);
+		free_maps(game_info->map, *game_info);
+		exit(EXIT_SUCCESS);
 	}
-	if (name_valid(argv[1]) != 0)
-	{
-		printf("잘못된 이름입니다.");
-		return (0);
-	}
-	atexit(leak);
-	init_data(&game_info);
-	parsing_main(argv[1], &game_info);
-	make_window_main(&game_info);
+	if (key == KEY_A)
+		press_a(game_info);
+	if (key == KEY_D)
+		press_d(game_info);
+	if (key == KEY_S)
+		press_s(game_info);
+	if (key == KEY_W)
+		press_w(game_info);
+	return (1);
 }

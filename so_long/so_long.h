@@ -3,7 +3,6 @@
 
 # include "mlx.h"
 # include "libft/libft.h"
-// # include "libftprintf/ft_printf.h"
 # include "get_next_line_bonus.h"
 #include <fcntl.h>
 
@@ -28,16 +27,27 @@ typedef struct s_game
 	unsigned long long		height;
 	unsigned long long		width;
 	unsigned long long		c_num;
-	unsigned				e_num;
+	unsigned				e_num; 
 	unsigned				p_num;
-	unsigned				p_x;
-	unsigned				p_y;
+	unsigned long long		p_x;
+	unsigned long long		p_y;
+	unsigned long long		e_x;
+	unsigned long long		e_y;
 	char					**map;
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void					*mlx_ptr;
+	void					*win_ptr;
+	int						move_cnt;
+	void					*img_ground;
+	void					*img_wall;
+	void					*img_coin;
+	void					*img_player;
+	void					*img_exit1;
+	void					*img_exit2;
+	int						img_wid;
+	int						img_hei;
+	unsigned				get_coin;
 } t_game;
 
-char			**malloc_map(t_game map_info);
 void			read_map(char *file, char **map, t_game map_info);
 size_t			ft_strlen_n(const char *s);
 void			parse_map_element(char **map, t_game* map_info);
@@ -54,5 +64,22 @@ void			parsing_main(char *argv, t_game *map_info);
 void			init_data(t_game *game_info);
 void			make_window_main(t_game *game_info);
 void			parse_mapinfo(char *file, t_game* map_info);
+void			setting_img(t_game *game_info);
+int				press_x_button(t_game *game_info);
+int				move_key(int key, t_game *game_info);
+void			press_a(t_game *game_info);
+void			press_d(t_game *game_info);
+void			press_s(t_game *game_info);
+void			press_w(t_game *game_info);
+void			print_move_cnt(t_game *game_info);
+void			move_player(t_game *game_info, int sig);
+void			set_player(t_game *game_info, int x, int y);
+void			set_pixel(t_game *game_info, unsigned long long wid, unsigned long long hei);
+void			set_pixel2(t_game *game_info, unsigned long long wid, unsigned long long hei);
+
+void			set_player_e(t_game *game_info, int x, int y);
+void			mapping_map_element(char **map, t_game* map_info, \
+unsigned long long hei, unsigned long long wid);
+void			set_player_e2(t_game *game_info, int x, int y);
 
 #endif

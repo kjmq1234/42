@@ -6,16 +6,16 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:29:17 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/18 21:12:45 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/04 03:10:05 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	parse_mapinfo(char *file, t_game* map_info)
+void	parse_mapinfo(char *file, t_game *map_info)
 {
-    int		fd;
-	char*	line;
+	int		fd;
+	char	*line;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -24,41 +24,24 @@ void	parse_mapinfo(char *file, t_game* map_info)
 	if (!line)
 		exit(1);
 	map_info->width = ft_strlen_n(line);
+	free(line);
 	map_info->height++;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			break;
+			break ;
 		if (map_info->width != ft_strlen_n(line))
 		{
 			printf("맵이 직사각형이 아닙니다.");
 			exit(1);
 		}
+		free(line);
 		map_info->height++;
 	}
 }
 
-char	**malloc_map(t_game map_info)
-{
-	char**				map;
-	unsigned long long	i;
-
-	i = 0;
-	map = (char**) malloc(map_info.height * (sizeof(char*)));
-	if (!map)
-		exit(1);
-	while (i < map_info.height)
-	{
-		map[i] = (char*) malloc(map_info.width * sizeof(char) + 1);
-		if (!map[i])
-			exit(1);
-		i++;
-	}
-	return (map);
-}
-
-void	parse_map_element(char **map, t_game* map_info)
+void	parse_map_element(char **map, t_game *map_info)
 {
 	unsigned long long	hei;
 	unsigned long long	wid;
@@ -69,16 +52,7 @@ void	parse_map_element(char **map, t_game* map_info)
 	{
 		while (wid < map_info->width)
 		{
-			if (map[hei][wid] == 'E')
-				map_info->e_num++;
-			if (map[hei][wid] == 'C')
-				map_info->c_num++;
-			if (map[hei][wid] == 'P')
-			{
-				map_info->p_num++;
-				map_info->p_y = hei;
-				map_info->p_x = wid;
-			}
+			mapping_map_element(map, map_info, hei, wid);
 			wid++;
 		}
 		hei++;
@@ -88,6 +62,7 @@ void	parse_map_element(char **map, t_game* map_info)
 
 void	read_map(char *file, char **map, t_game map_info)
 {
+	char				*str;
 	int					fd;
 	unsigned long long	i;
 
@@ -95,9 +70,31 @@ void	read_map(char *file, char **map, t_game map_info)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		exit_open();
-	while(i < map_info.height)
+	while (i < map_info.height)
 	{
-		map[i] = get_next_line(fd);
+		str = get_next_line(fd);
+		map[i] = ft_strdup(str);
+		free(str);
 		i++;
+	}
+	close(fd);
+}
+
+void	mapping_map_element(char **map, t_game *map_info, \
+unsigned long long hei, unsigned long long wid)
+{
+	if (map[hei][wid] == 'E')
+	{
+		map_info->e_num++;
+		map_info->e_y = hei;
+		map_info->e_x = wid;
+	}
+	if (map[hei][wid] == 'C')
+		map_info->c_num++;
+	if (map[hei][wid] == 'P')
+	{
+		map_info->p_num++;
+		map_info->p_y = hei;
+		map_info->p_x = wid;
 	}
 }

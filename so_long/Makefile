@@ -11,7 +11,10 @@ SRCS = get_next_line_bonus.c \
 	utils.c \
 	main.c \
 	map_parsing.c \
-	make_window.c
+	make_window.c \
+	key_control.c \
+	press_keys.c \
+	move_utils.c
 
 INC_DIR = include
 LIB_DIR = libft
