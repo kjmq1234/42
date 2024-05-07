@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 00:32:30 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/04 03:15:18 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/08 00:12:08 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	move_player(t_game *game_info, int sig)
 		set_player_e(game_info, x, y);
 	else
 		set_player(game_info, x, y);
-	printf("%d\n", game_info->get_coin);
 }
 
 void	set_player(t_game *game_info, int x, int y)
@@ -62,15 +61,3 @@ void	set_player_e(t_game *game_info, int x, int y)
 	game_info->move_cnt++;
 	print_move_cnt(game_info);
 }
-
-// void	set_player_e2(t_game *game_info, int x, int y)
-// {
-// 	game_info->map[game_info->p_y][game_info->p_x] = '0';
-// 	game_info->p_x = x;
-//     game_info->p_y = y;
-// 	game_info->map[y][x] = 'o';
-//     setting_img(game_info);
-//     game_info->move_cnt++;
-//     print_move_cnt(game_info);
-// 	exit(1);
-// }

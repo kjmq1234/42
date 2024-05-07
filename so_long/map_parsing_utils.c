@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:29:17 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/04 03:10:05 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/08 00:07:17 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	parse_mapinfo(char *file, t_game *map_info)
 			break ;
 		if (map_info->width != ft_strlen_n(line))
 		{
-			printf("맵이 직사각형이 아닙니다.");
+			ft_putendl_fd("맵이 직사각형이 아닙니다.", 1);
 			exit(1);
 		}
 		free(line);

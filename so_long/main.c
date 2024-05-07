@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 03:04:43 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/04 03:04:44 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/08 00:11:57 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	main(int argc, char *argv[])
 	
 	if (argc != 2)
 	{
-		printf("맵을 넣어주세요.");
+		ft_putendl_fd("맵을 넣어주세요.", 1);
 		return (0);
 	}
 	if (name_valid(argv[1]) != 0)
 	{
-		printf("잘못된 이름입니다.");
+		ft_putendl_fd("잘못된 이름입니다.", 1);
 		return (0);
 	}
 	atexit(leak);

@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 03:02:50 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/04 03:19:51 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/07 23:54:49 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ void	init_data(t_game *game_info)
 	"./imgs/exit1.xpm", &img_wid, &img_hei);
 	game_info->img_wall = mlx_xpm_file_to_image(game_info->mlx_ptr, \
 	"./imgs/wall.xpm", &img_wid, &img_hei);
+}
+
+void	init_data2(t_game *game_info)
+{
 	game_info->move_cnt = 0;
 	game_info->get_coin = 0;
+	game_info->dfs_coin = 0;
+	game_info->dfs_e = 0;
 }

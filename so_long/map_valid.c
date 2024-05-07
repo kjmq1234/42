@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:21:32 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/04 03:13:32 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/08 00:08:05 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	valid_check(char **map, t_game *map_info)
 {
 	if ((!edge_valid(map, *map_info)) | (!element_valid(*map_info)) \
-	| ((!road_valid(map, *map_info))))
+	| (!road_valid(map, map_info)))
 		return (0);
 	return (1);
 }
@@ -25,15 +25,15 @@ int	element_valid(t_game map_info)
 	if ((map_info.c_num == 0) || (map_info.p_num != 1) || (map_info.e_num != 1))
 	{
 		if (map_info.c_num == 0)
-			printf("Error\n수집품이 없습니다.\n");
+			ft_putstr_fd("Error\n수집품이 없습니다.\n", 1);
 		if (map_info.e_num == 0)
-			printf("Error\n출구가 없습니다.\n");
+			ft_putstr_fd("Error\n출구가 없습니다.\n", 1);
 		if (map_info.e_num > 1)
-			printf("Error\n출구가 여러개입니다.\n");
+			ft_putstr_fd("Error\n출구가 여러개입니다.\n", 1);
 		if (map_info.p_num == 0)
-			printf("Error\n시작지점이 없습니다.\n");
+			ft_putstr_fd("Error\n시작지점이 없습니다.\n", 1);
 		if (map_info.p_num > 1)
-			printf("Error\n시작지점이 여러개입니다.\n");
+			ft_putstr_fd("Error\n시작지점이 여러개입니다.\n", 1);
 		return (0);
 	}
 	return (1);
@@ -54,7 +54,7 @@ int	edge_valid(char **map, t_game map_info)
 			(hei == map_info.height - 1) || (wid == map_info.width - 1) \
 			|| (wid == 0)))
 			{
-				printf("Error\n벽에 문제가 있습니다.\n");
+				ft_putstr_fd("Error\n벽에 문제가 있습니다.\n", 1);
 				return (0);
 			}
 			wid++;
@@ -63,27 +63,6 @@ int	edge_valid(char **map, t_game map_info)
 		wid = 0;
 	}
 	return (1);
-}
-
-unsigned int	search_item_valid(char **map, t_game map_info, int x, int y, char item)
-{
-	int	cnt;
-
-	cnt = 0;
-	if ((map[y][x] == '1') || (map[y][x] == 'V'))
-		return (0);
-	if (map[y][x] == item)
-	{
-		map[y][x] = 'c';
-		return (1);
-	}
-	map[y][x] = 'V';
-	cnt = 0;
-	cnt += search_item_valid(map, map_info, x + 1, y, item);
-	cnt += search_item_valid(map, map_info, x - 1, y, item);
-	cnt += search_item_valid(map, map_info, x, y + 1, item);
-	cnt += search_item_valid(map, map_info, x, y - 1, item);
-	return (cnt);
 }
 
 int	name_valid(char *name)
@@ -96,24 +75,23 @@ int	name_valid(char *name)
 	return (ft_strncmp(dot, ".ber\0", 5));
 }
 
-int	road_valid(char **map, t_game map_info)
+int	road_valid(char **map, t_game *map_info)
 {
-	char	**e_map;
 	char	**c_map;
-	char	**p_map;
+	char	**e_map;
 
-	e_map = copy_map(map, map_info);
-	c_map = copy_map(map, map_info);
-	p_map = copy_map(map, map_info);
-	if ((search_item_valid(e_map, map_info, map_info.p_x, map_info.p_y, 'E') != map_info.e_num) || \
-	(search_item_valid(c_map, map_info, map_info.p_x, map_info.p_y, 'C') != map_info.c_num) || \
-	(search_item_valid(p_map, map_info, map_info.p_x, map_info.p_y, 'P') != map_info.p_num))
+	c_map = copy_map(map, *map_info);
+	e_map = copy_map(map, *map_info);
+	search_item_valid(c_map, map_info, map_info->p_x, map_info->p_y);
+	search_item_valid_e(e_map, map_info, map_info->p_x, map_info->p_y);
+	if ((map_info->dfs_coin != map_info->c_num) || (map_info->dfs_e != 1))
 	{
-		printf("잘못된 경로가 있습니다.");
+		ft_putendl_fd("잘못된 경로가 있습니다.", 1);
+		free_maps(c_map, *map_info);
+		free_maps(e_map, *map_info);
 		return (0);
 	}
-	free_maps(e_map, map_info);
-	free_maps(c_map, map_info);
-	free_maps(p_map, map_info);
+	free_maps(c_map, *map_info);
+	free_maps(e_map, *map_info);
 	return (1);
 }

@@ -14,7 +14,8 @@ SRCS = get_next_line_bonus.c \
 	make_window.c \
 	key_control.c \
 	press_keys.c \
-	move_utils.c
+	move_utils.c \
+	map_valid_dfs.c
 
 INC_DIR = include
 LIB_DIR = libft
