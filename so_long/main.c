@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 03:04:43 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/08 00:11:57 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/10 02:19:36 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	main(int argc, char *argv[])
 	
 	if (argc != 2)
 	{
-		ft_putendl_fd("맵을 넣어주세요.", 1);
-		return (0);
+		ft_putendl_fd("Error\n 하나의 맵을 넣어주세요.", 1);
+		exit(EXIT_FAILURE);
 	}
 	if (name_valid(argv[1]) != 0)
 	{
-		ft_putendl_fd("잘못된 이름입니다.", 1);
-		return (0);
+		ft_putendl_fd("Error\n잘못된 파일명입니다.", 1);
+		exit(EXIT_FAILURE);
 	}
 	atexit(leak);
 	init_data(&game_info);

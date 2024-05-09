@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 03:16:44 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/08 00:08:24 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/10 01:31:05 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ size_t	ft_strlen_n(const char *s)
 
 void	exit_open(void)
 {
-	ft_putendl_fd("잘못된 파일명입니다.", 1);
-	exit(1);
+	ft_putendl_fd("Error\n존재하지 않는 파일명입니다.", 1);
+	exit(EXIT_FAILURE);
 }
 
 char	**copy_map(char **map, t_game info)

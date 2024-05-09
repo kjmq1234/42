@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:50:07 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/04 03:08:56 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/10 01:32:41 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	make_window_main(t_game *game_info)
 {
 	game_info->win_ptr = mlx_new_window(game_info->mlx_ptr, \
-	game_info->width * 64, game_info->height * 64, "lingard");
+	game_info->width * 64, game_info->height * 64, "lingard_but_poketmon");
 	setting_img(game_info);
 	mlx_hook(game_info->win_ptr, X_EVENT_PRESS_KEY, 0, move_key, game_info);
 	mlx_hook(game_info->win_ptr, X_EVENT_RED_X, 0, &press_x_button, game_info);

@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:21:32 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/08 00:08:05 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/10 03:11:36 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ int	valid_check(char **map, t_game *map_info)
 
 int	element_valid(t_game map_info)
 {
+	if (map_info.height == 0)
+	{
+		ft_putendl_fd("Error\n빈 맵입니다.", 1);
+		return (0);
+	}
 	if ((map_info.c_num == 0) || (map_info.p_num != 1) || (map_info.e_num != 1))
 	{
 		if (map_info.c_num == 0)
@@ -86,7 +91,7 @@ int	road_valid(char **map, t_game *map_info)
 	search_item_valid_e(e_map, map_info, map_info->p_x, map_info->p_y);
 	if ((map_info->dfs_coin != map_info->c_num) || (map_info->dfs_e != 1))
 	{
-		ft_putendl_fd("잘못된 경로가 있습니다.", 1);
+		ft_putendl_fd("Error\n잘못된 경로가 있습니다.", 1);
 		free_maps(c_map, *map_info);
 		free_maps(e_map, *map_info);
 		return (0);

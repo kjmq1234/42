@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 00:32:30 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/08 00:12:08 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/10 02:42:39 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	move_player(t_game *game_info, int sig)
 	if (game_info->map[y][x] == '1')
 		return ;
 	if (game_info->map[y][x] == 'e')
-		exit(1);
+		exit(EXIT_SUCCESS);
 	if (game_info->map[y][x] == 'C')
 	{
 		game_info->get_coin++;
@@ -41,6 +41,8 @@ void	set_player(t_game *game_info, int x, int y)
 {
 	if (game_info->map[game_info->p_y][game_info->p_x] == 'O')
 		game_info->map[game_info->p_y][game_info->p_x] = 'E';
+	else if (game_info->map[game_info->p_y][game_info->p_x] == 'e')
+		game_info->map[game_info->p_y][game_info->p_x] = 'e';
 	else
 		game_info->map[game_info->p_y][game_info->p_x] = '0';
 	game_info->p_x = x;
