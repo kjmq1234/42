@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:21:32 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/10 03:47:25 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/10 03:51:59 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,15 @@ int	road_valid(char **map, t_game *map_info)
 	c_map = copy_map(map, *map_info);
 	e_map = copy_map(map, *map_info);
 	search_item_valid(c_map, map_info, map_info->p_x, map_info->p_y);
-	// search_item_valid_e(e_map, map_info, map_info->p_x, map_info->p_y);
-	// if ((map_info->dfs_coin != map_info->c_num) || (map_info->dfs_e != 1))
-	// {
-	// 	ft_putendl_fd("Error\n잘못된 경로가 있습니다.", 1);
-	// 	free_maps(c_map, *map_info);
-	// 	free_maps(e_map, *map_info);
-	// 	return (0);
-	// }
-	// free_maps(c_map, *map_info);
-	// free_maps(e_map, *map_info);
+	search_item_valid_e(e_map, map_info, map_info->p_x, map_info->p_y);
+	if ((map_info->dfs_coin != map_info->c_num) || (map_info->dfs_e != 1))
+	{
+		ft_putendl_fd("Error\n잘못된 경로가 있습니다.", 1);
+		free_maps(c_map, *map_info);
+		free_maps(e_map, *map_info);
+		return (0);
+	}
+	free_maps(c_map, *map_info);
+	free_maps(e_map, *map_info);
 	return (1);
 }
