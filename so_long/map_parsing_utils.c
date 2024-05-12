@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:29:17 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/10 03:02:29 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/12 23:51:14 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	parse_mapinfo(char *file, t_game *map_info)
 	if (fd == -1)
 		exit_open();
 	line = get_next_line(fd);
-	if ((!line) || (line[0] == '\0'))
-		exit(EXIT_FAILURE);
+	check_empty(line);
 	map_info->width = ft_strlen_n(line);
 	free(line);
 	map_info->height++;
@@ -100,6 +99,15 @@ unsigned long long hei, unsigned long long wid)
 	else if ((map[hei][wid] != '0') && (map[hei][wid] != '1'))
 	{
 		ft_putendl_fd("Error\n맵에 잘못된 값이 있습니다.", 1);
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	check_empty(char *line)
+{
+	if ((!line) || (line[0] == '\0'))
+	{
+		ft_putendl_fd("Error\n빈 파일입니다.", 1);
 		exit(EXIT_FAILURE);
 	}
 }

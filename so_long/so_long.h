@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 23:58:57 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/08 00:01:56 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/12 23:51:05 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ void			mapping_map_element(char **map, t_game *map_info, \
 unsigned long long hei, unsigned long long wid);
 void			set_player_e2(t_game *game_info, int x, int y);
 void			init_data2(t_game *game_info);
+void			check_empty(char *line);
 
 #endif

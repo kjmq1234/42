@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:21:32 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/10 03:51:59 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/12 23:48:11 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	valid_check(char **map, t_game *map_info)
 	if ((!edge_valid(map, *map_info)) | (!element_valid(*map_info)))
 		return (0);
 	if (!road_valid(map, map_info))
-		return (0);	
+		return (0);
 	return (1);
 }
 
@@ -75,7 +75,15 @@ int	name_valid(char *name)
 {
 	char	*dot;
 
-	if (ft_strrchr(name, '.') == 0)
+	dot = name;
+	if (ft_strrchr(name, '/') != NULL)
+	{
+		dot = ft_strrchr(name, '/');
+		dot++;
+	}
+	if (ft_strncmp(dot, ".ber\0", 5) == 0)
+		return (1);
+	if (ft_strrchr(name, '.') == NULL)
 		return (1);
 		dot = ft_strrchr(name, '.');
 	return (ft_strncmp(dot, ".ber\0", 5));

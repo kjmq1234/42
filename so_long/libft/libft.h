@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:37:37 by jaemikim          #+#    #+#             */
-/*   Updated: 2023/12/24 11:23:41 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/12 22:15:43 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ int				ft_puthex_fd(int n, int fd);
 int				ft_putuhex_fd(int n, int fd);
 int				ft_putunbr_fd(unsigned int n, int fd);
 int				ft_putptr_fd(void *n, int fd);
+int				ft_strcmp(char *s1, char *s2);
 
 #endif
