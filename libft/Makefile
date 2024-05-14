@@ -33,7 +33,8 @@ ft_realloc.c \
 ft_puthex_fd.c \
 ft_putuhex_fd.c \
 ft_putunbr_fd.c \
-ft_putptr_fd.c
+ft_putptr_fd.c \
+ft_strcmp.c
 
 OBJS = $(SRCS:.c=.o)
 
