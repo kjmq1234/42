@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 00:20:18 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/04/18 19:06:12 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:24:18 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ void	b_to_a(t_push_swap *set)
 			i--;
 		}
 		else
-			change_top(set, i);
+			change_top(set, i); 
 	}
 }

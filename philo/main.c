@@ -5,25 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/03 17:54:22 by jammin            #+#    #+#             */
-/*   Updated: 2024/05/19 16:15:12 by jaemikim         ###   ########.fr       */
+/*   Created: 2024/05/19 15:39:20 by jaemikim          #+#    #+#             */
+/*   Updated: 2024/05/19 17:17:04 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "philo.h"
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	t_deque		deque_a;
-	t_deque		deque_b;
-	t_push_swap	push_swap;
-	float		chunk;
-	int			count;
-
-	init_set(&push_swap, &deque_a, &deque_b);
-	count = parse_arg_main(argc, argv, &push_swap);
-	chunk = (count * count * 0.000000053) + (count * 0.03) + 14.5;
-	sort_main(&push_swap, chunk);
-	free_stack(push_swap.a);
-	free_stack(push_swap.b);
+	t_info philo_info;
+	
+	if ((argc < 5) || (argc > 6))
+		error_print("인자의 갯수를 정확하게 입력해주세요");
+	init_main(&philo_info, argc, argv);
 }
