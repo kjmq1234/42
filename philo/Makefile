@@ -6,7 +6,10 @@ CFLAGS = -Wall -Werror -Wextra
 SRCS = main.c \
 	   utils.c \
 		error_handle.c \
-		init_data.c
+		init_data.c \
+		print_mutex.c \
+		handle_thread.c \
+		philo_actions.c \
 
 OBJS = $(SRCS:.c=.o)
 

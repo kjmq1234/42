@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_mutex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 15:39:20 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/25 04:00:29 by jammin           ###   ########.fr       */
+/*   Created: 2024/06/25 01:43:40 by jammin            #+#    #+#             */
+/*   Updated: 2024/06/25 04:07:10 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int argc, char *argv[])
+void	print_mutex(t_info *philo_info, char *str, int id)
 {
-	t_info philo_info;
-	
-	if ((argc < 5) || (argc > 6))
-		error_print("인자의 갯수를 정확하게 입력해주세요");
-	init_main(&philo_info, argc, argv);
-	start_thread(&philo_info);
+    int current;
+    
+    current = get_time();
+
+    
+    if (current == -1)
+        error_print("gettimeofday() FAILURE\n");
+    pthread_mutex_lock(&philo_info->print);
+    if (philo_info->philo_is_die == 0)
+        printf("%d %d %s\n", current - philo_info->philos[id - 1].start_time, id, str);
+    pthread_mutex_unlock(&philo_info->print);
 }

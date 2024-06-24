@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
+/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:02:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/05/19 17:45:03 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/06/25 03:49:33 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	init_info(t_info *philo_info, int argc, char **argv)
     philo_info->time_eat = ft_atoi(argv[3]);
     philo_info->time_sleep = ft_atoi(argv[4]);
     philo_info->cnt_loop = 0;
-    philo_info->end = 0;
+    philo_info->philo_is_die = 0;
     if (philo_info->cnt_philo < 0 || philo_info->time_die < 0 \
     || philo_info->time_eat < 0 || philo_info->time_sleep < 0)
-            error_print("0보다 이상의 인자를 넣어주세요.");
+            error_print("0보다 큰 인자를 넣어주세요.");
     if (argc == 6)
     {
         philo_info->cnt_loop = ft_atoi(argv[5]);
@@ -51,9 +51,14 @@ void	init_forks(t_info *philo_info)
 		error_print("메모리 할당 실패입니다.");
 	while (i < philo_info->cnt_philo)
 	{
-		pthread_mutex_init(&philo_info->forks[i], NULL);
+		if (pthread_mutex_init(&philo_info->forks[i], NULL))
+			error_print("mutex 초기화 실패입니다.");
 		i++;
 	}
+	if (pthread_mutex_init(&philo_info->print, NULL))
+		error_print("mutex 초기화 실패입니다.");
+	if (pthread_mutex_init(&philo_info->monitoring, NULL))
+		error_print("mutex 초기화 실패입니다.");
 }
 
 void	init_philo(t_info *philo_info)
@@ -71,6 +76,8 @@ void	init_philo(t_info *philo_info)
 		philo_info->philos[i].lfork = i;
 		philo_info->philos[i].rfork = (i + 1) % philo_info->cnt_philo;
 		philo_info->philos[i].status = 0;
+		philo_info->philos[i].die_time = get_time() + philo_info->time_die;
+		philo_info->philos[i].info = philo_info;
 		i++;
 	}
 }
