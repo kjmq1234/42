@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 14:25:19 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/26 01:51:22 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/06/26 02:47:04 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 typedef struct s_philo
 {
 	int	die_time;
-	int start_time;
 	int	cnt_eat;
 	int	status;
 	int	id;
@@ -43,7 +42,7 @@ typedef struct s_info
 	int	time_sleep;
 	int	cnt_loop;
 	int philo_is_die;
-	int philo_is_comple;
+	int start_time;
 	
 	t_philo	*philos;
 	pthread_mutex_t *forks;
