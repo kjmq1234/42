@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 03:39:05 by jammin            #+#    #+#             */
-/*   Updated: 2024/06/26 03:00:37 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/06/26 03:31:48 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ void	drop_forks(t_philo *philo)
 void	eat(t_philo *philo)
 {
 	take_forks(philo);
+	pthread_mutex_lock(&philo->info->monitoring);
 	philo->die_time = get_time() + philo->info->time_die;
+	philo->cnt_eat++;
+	pthread_mutex_unlock(&philo->info->monitoring);
 	print_mutex(philo->info, "is eating", philo->id);
 	ft_usleep(philo->info->time_eat);
-	philo->cnt_eat++;
 	drop_forks(philo);
 }
 

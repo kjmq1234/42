@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:02:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/26 02:47:14 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/06/26 03:23:01 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	init_philo(t_info *philo_info)
 		philo_info->philos[i].lfork = i;
 		philo_info->philos[i].rfork = (i + 1) % philo_info->cnt_philo;
 		philo_info->philos[i].status = 0;
-		philo_info->philos[i].die_time = philo_info->start_time + philo_info->time_die;
 		philo_info->philos[i].info = philo_info;
 		i++;
 	}
