@@ -6,7 +6,7 @@
 /*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:02:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/25 03:49:33 by jammin           ###   ########.fr       */
+/*   Updated: 2024/06/25 22:35:22 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	init_forks(t_info *philo_info)
 	if (pthread_mutex_init(&philo_info->print, NULL))
 		error_print("mutex 초기화 실패입니다.");
 	if (pthread_mutex_init(&philo_info->monitoring, NULL))
+		error_print("mutex 초기화 실패입니다.");
+	if (pthread_mutex_init(&philo_info->die, NULL))
 		error_print("mutex 초기화 실패입니다.");
 }
 

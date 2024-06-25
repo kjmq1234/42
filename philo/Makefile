@@ -10,7 +10,7 @@ SRCS = main.c \
 		print_mutex.c \
 		handle_thread.c \
 		philo_actions.c \
-
+		free_resource.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

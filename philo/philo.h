@@ -6,7 +6,7 @@
 /*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 14:25:19 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/25 04:09:04 by jammin           ###   ########.fr       */
+/*   Updated: 2024/06/25 22:35:07 by jammin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_info
 	t_philo	*philos;
 	pthread_mutex_t *forks;
 	pthread_mutex_t print;
+	pthread_mutex_t die;
 	pthread_mutex_t monitoring;
 }	t_info;
 
@@ -65,5 +66,12 @@ void	start_thread(t_info *philo_info);
 void	philo_routine(t_philo *philo);
 void 	take_forks(t_philo *philo);
 void	drop_forks(t_philo *philo);
+void	eat(t_philo *philo);
+void	sleeping(t_philo *philo);
+void    monitering(t_info *philo_info);
+int		check_die(t_philo *philo);
+void	free_malloc(t_info *philo_info);
+void	destroy_mutex(t_info *philo_info);
+
 
 #endif
