@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 15:41:53 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/25 00:47:31 by jammin           ###   ########.fr       */
+/*   Updated: 2024/06/26 01:27:25 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	get_time(void)
 }
 
 
-void	ft_usleep(int time)
+void ft_usleep(int ms)
 {
-	int	start;
-
-	start = get_time();
-	while ((get_time() - start) < time)
-		usleep(time / 10);
+    long start = get_time();
+    long end = start + ms;
+    while (get_time() < end)
+        usleep(100);
 }
+

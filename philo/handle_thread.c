@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_thread.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 03:11:43 by jammin            #+#    #+#             */
-/*   Updated: 2024/06/25 23:53:20 by jammin           ###   ########.fr       */
+/*   Updated: 2024/06/26 02:13:11 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,19 @@ void    *routine(void *arg)
 
     philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
-		ft_usleep(philo->info->time_eat);
-    while (philo->info->philo_is_die == 0)
+		ft_usleep(1);
+    while (1)
     {
 		eat(philo);
-		// if (philo->cnt_eat == philo->info->cnt_loop)
-		// {
-		// 	pthread_mutex_lock(&philo->info->monitoring);
-		// 	philo->info->philo_is_comple++;
-		// 	pthread_mutex_unlock(&philo->info->monitoring);
-		// 	break ;
-		// }
+		pthread_mutex_lock(&philo->info->die);
+		if (philo->info->philo_is_die == 1)
+		{
+			pthread_mutex_unlock(&philo->info->die);
+			break ;
+		}
+		pthread_mutex_unlock(&philo->info->die);
 		sleeping(philo);
+		ft_usleep(1); // 스케줄 관리를 위한 
 		print_mutex(philo->info, "is thinking", philo->id);
     }
     return (NULL);
@@ -67,36 +68,47 @@ void    *routine(void *arg)
 void    monitering(t_info *philo_info)
 {
     int i;
-	long long current;
+	int philo_is_comple;
 
-    while (philo_info->philo_is_die == 0)
+	philo_is_comple = 0;
+    while (1)
     {
-        if (philo_info->cnt_loop != 0 && philo_info->philo_is_comple == philo_info->cnt_philo)
-            break;
 		i = 0;
 		while (i < philo_info->cnt_philo)
 		{
-			current = get_time();
-			if (current > philo_info->philos[i].die_time)
+			pthread_mutex_lock(&philo_info->die);
+			if (check_die(&philo_info->philos[i], &philo_is_comple) == 1)
 			{
-				print_mutex(philo_info, "died", philo_info->philos[i].id);
-				pthread_mutex_lock(&philo_info->die);
-				philo_info->philo_is_die = 1;
 				pthread_mutex_unlock(&philo_info->die);
-				break ;
+				return ;
 			}
 			i++;
+			pthread_mutex_unlock(&philo_info->die);
+		}
+		if (philo_info->cnt_loop != -1 && philo_is_comple == philo_info->cnt_philo)
+		{
+			pthread_mutex_lock(&philo_info->die);
+			philo_info->philo_is_die = 1;
+			pthread_mutex_unlock(&philo_info->die);
+			break ;
 		}
     }
 }
 
-int	check_die(t_philo *philo)
+int	check_die(t_philo *philo, int *philo_is_comple)
 {
 	int current;
 
 	current = get_time();
 	if (current == -1)
 		error_print("gettimeofday() FAILURE\n");
+	if (philo->info->cnt_loop != -1 && philo->cnt_eat >= philo->info->cnt_loop)
+	{
+		if (philo->status == 0)
+			*philo_is_comple += 1;
+		philo->status = 1;
+		return (0);
+	}
 	if (current > philo->die_time)
 	{
 		print_mutex(philo->info, "died", philo->id);

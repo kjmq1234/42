@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:02:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/25 22:35:22 by jammin           ###   ########.fr       */
+/*   Updated: 2024/06/26 01:51:27 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_info(t_info *philo_info, int argc, char **argv)
     philo_info->time_die = ft_atoi(argv[2]);
     philo_info->time_eat = ft_atoi(argv[3]);
     philo_info->time_sleep = ft_atoi(argv[4]);
-    philo_info->cnt_loop = 0;
+    philo_info->cnt_loop = -1;
     philo_info->philo_is_die = 0;
     if (philo_info->cnt_philo < 0 || philo_info->time_die < 0 \
     || philo_info->time_eat < 0 || philo_info->time_sleep < 0)

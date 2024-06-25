@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 14:25:19 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/25 22:35:07 by jammin           ###   ########.fr       */
+/*   Updated: 2024/06/26 01:51:22 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	drop_forks(t_philo *philo);
 void	eat(t_philo *philo);
 void	sleeping(t_philo *philo);
 void    monitering(t_info *philo_info);
-int		check_die(t_philo *philo);
+int		check_die(t_philo *philo, int *philo_is_comple);
 void	free_malloc(t_info *philo_info);
 void	destroy_mutex(t_info *philo_info);
 
