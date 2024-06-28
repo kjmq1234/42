@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 15:41:53 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/26 02:54:44 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:07:20 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,13 @@ int	get_time(void)
 	return ((tv.tv_sec * (int) 1000) + (tv.tv_usec / 1000));
 }
 
-
-void ft_usleep(int ms)
+void	ft_usleep(int ms)
 {
-    long start;
-    long end;
+	long	start;
+	long	end;
 
 	start = get_time();
 	end = start + ms;
-    while (get_time() < end)
-        usleep(100);
+	while (get_time() < end)
+		usleep(100);
 }
-
