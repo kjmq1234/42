@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:02:39 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/28 16:05:40 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/06/29 17:34:00 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	init_info(t_info *philo_info, int argc, char **argv)
 	philo_info->cnt_loop = -1;
 	philo_info->philo_is_die = 0;
 	philo_info->start_time = get_time();
-	if (philo_info->cnt_philo < 0 || philo_info->time_die < 0 \
+	if (philo_info->cnt_philo <= 0 || philo_info->time_die < 0 \
 			|| philo_info->time_eat < 0 || philo_info->time_sleep < 0)
-		error_print("0보다 큰 인자를 넣어주세요.");
+		error_print("유효한 인자를 넣어주세요.");
 	if (argc == 6)
 	{
 		philo_info->cnt_loop = ft_atoi(argv[5]);
-		if (philo_info->cnt_loop < 0)
-			error_print("0 이상의 인자를 넣어주세요.");
+		if (philo_info->cnt_loop <= 0)
+			error_print("유효한 인자를 넣어주세요.");
 	}
 	init_forks(philo_info);
 }

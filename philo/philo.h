@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 14:25:19 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/28 16:09:20 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/06/29 19:20:21 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	init_forks(t_info *philo_info);
 void	init_philo(t_info *philo_info);
 int		get_time(void);
 void	ft_usleep(int time);
-void	print_mutex(t_info *philo_info, char *str, int id);
+void	print_mutex(t_info *philo_info, char *str, int id, int isdie);
 void	*routine(void *arg);
 void	start_thread(t_info *philo_info);
 void	philo_routine(t_philo *philo);
@@ -67,6 +67,8 @@ void	monitering(t_info *philo_info);
 void	free_malloc(t_info *philo_info);
 void	destroy_mutex(t_info *philo_info);
 int		check_die(t_philo *philo);
-int		check_comple(t_philo *philo, int *philo_is_comple);	
+int		check_comple(t_philo *philo, int *philo_is_comple);
+void	ft_pthread_mutex_lock(pthread_mutex_t *mutex);
+void	ft_pthread_mutex_unlock(pthread_mutex_t *mutex);
 
 #endif

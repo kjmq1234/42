@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 03:11:43 by jammin            #+#    #+#             */
-/*   Updated: 2024/06/28 16:18:42 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/06/29 19:21:05 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,18 @@ void	*routine(void *arg)
 		ft_usleep(philo->info->time_eat);
 	while (1)
 	{
-		pthread_mutex_lock(&philo->info->die);
+		ft_pthread_mutex_lock(&philo->info->die);
 		if (philo->info->philo_is_die == 1)
 		{
-			pthread_mutex_unlock(&philo->info->die);
+			ft_pthread_mutex_unlock(&philo->info->die);
 			break ;
 		}
-		pthread_mutex_unlock(&philo->info->die);
+		ft_pthread_mutex_unlock(&philo->info->die);
 		eat(philo);
 		if (philo->info->cnt_philo != 1)
 		{
 			sleeping(philo);
-			print_mutex(philo->info, "is thinking", philo->id);
+			print_mutex(philo->info, "is thinking", philo->id, 0);
 		}
 		ft_usleep(1);
 	}
@@ -85,9 +85,9 @@ void	monitering(t_info *philo_info)
 		if (philo_info->cnt_loop != -1 && \
 		philo_is_comple == philo_info->cnt_philo)
 		{
-			pthread_mutex_lock(&philo_info->die);
+			ft_pthread_mutex_lock(&philo_info->die);
 			philo_info->philo_is_die = 1;
-			pthread_mutex_unlock(&philo_info->die);
+			ft_pthread_mutex_unlock(&philo_info->die);
 			break ;
 		}
 	}
@@ -100,17 +100,14 @@ int	check_die(t_philo *philo)
 	current = get_time();
 	if (current == -1)
 		error_print("gettimeofday() FAILURE\n");
-	pthread_mutex_lock(&philo->info->monitoring);
+	ft_pthread_mutex_lock(&philo->info->monitoring);
 	if (current > philo->die_time)
 	{
-		pthread_mutex_unlock(&philo->info->monitoring);
-		print_mutex(philo->info, "died", philo->id);
-		pthread_mutex_lock(&philo->info->die);
-		philo->info->philo_is_die = 1;
-		pthread_mutex_unlock(&philo->info->die);
+		ft_pthread_mutex_unlock(&philo->info->monitoring);
+		print_mutex(philo->info, "died", philo->id, 1);
 		return (1);
 	}
-	pthread_mutex_unlock(&philo->info->monitoring);
+	ft_pthread_mutex_unlock(&philo->info->monitoring);
 	return (0);
 }
 
@@ -118,15 +115,15 @@ int	check_comple(t_philo *philo, int *philo_is_comple)
 {
 	if (philo->info->cnt_loop != -1 && philo->cnt_eat >= philo->info->cnt_loop)
 	{
-		pthread_mutex_lock(&philo->info->monitoring);
+		ft_pthread_mutex_lock(&philo->info->monitoring);
 		if (philo->status == 0)
 		{
 			*philo_is_comple += 1;
 		}
-		pthread_mutex_unlock(&philo->info->monitoring);
-		pthread_mutex_lock(&philo->info->monitoring);
+		ft_pthread_mutex_unlock(&philo->info->monitoring);
+		ft_pthread_mutex_lock(&philo->info->monitoring);
 		philo->status = 1;
-		pthread_mutex_unlock(&philo->info->monitoring);
+		ft_pthread_mutex_unlock(&philo->info->monitoring);
 	}
 	return (0);
 }
