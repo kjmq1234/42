@@ -6,7 +6,7 @@
 /*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 15:41:53 by jaemikim          #+#    #+#             */
-/*   Updated: 2024/06/29 19:45:22 by jaemikim         ###   ########.fr       */
+/*   Updated: 2024/06/29 19:50:58 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	ft_atoi(const char *str)
 		sum = sum * 10 + (*str - 48);
 		str++;
 	}
+	if (*str != '\0')
+		return (-1);
 	return (flag * sum);
 }
 
