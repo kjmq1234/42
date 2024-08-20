@@ -3,50 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   philo_actions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jammin <jammin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jaemikim <imyourdata@soongsil.ac.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 03:39:05 by jammin            #+#    #+#             */
-/*   Updated: 2024/06/25 23:53:11 by jammin           ###   ########.fr       */
+/*   Updated: 2024/06/29 19:22:59 by jaemikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	philo_routine(t_philo *philo)
-{
-	take_forks(philo);
-	eat(philo);
-	drop_forks(philo);
-	sleeping(philo);
-	print_mutex(philo->info, "is thinking", philo->id);
-}
-
 void	take_forks(t_philo *philo)
 {
-		pthread_mutex_lock(&philo->info->forks[philo->rfork]);
-		print_mutex(philo->info, "has taken a fork", philo->id);
-		pthread_mutex_lock(&philo->info->forks[philo->lfork]);
-		print_mutex(philo->info, "has taken a fork", philo->id);
+	if (philo->info->cnt_philo == 1)
+	{
+		ft_pthread_mutex_lock(&philo->info->forks[philo->lfork]);
+		print_mutex(philo->info, "has taken a fork", philo->id, 0);
+		ft_pthread_mutex_unlock(&philo->info->forks[philo->lfork]);
+		ft_usleep(philo->info->time_die);
+		return ;
+	}
+	else if (philo->id % 2 == 1)
+	{
+		ft_pthread_mutex_lock(&philo->info->forks[philo->rfork]);
+		print_mutex(philo->info, "has taken a fork", philo->id, 0);
+		ft_pthread_mutex_lock(&philo->info->forks[philo->lfork]);
+		print_mutex(philo->info, "has taken a fork", philo->id, 0);
+	}
+	else
+	{
+		ft_pthread_mutex_lock(&philo->info->forks[philo->lfork]);
+		print_mutex(philo->info, "has taken a fork", philo->id, 0);
+		ft_pthread_mutex_lock(&philo->info->forks[philo->rfork]);
+		print_mutex(philo->info, "has taken a fork", philo->id, 0);
+	}
 }
 
 void	drop_forks(t_philo *philo)
 {
-		pthread_mutex_unlock(&philo->info->forks[philo->lfork]);
-		pthread_mutex_unlock(&philo->info->forks[philo->rfork]);
+	if (philo->id % 2 == 0)
+	{
+		ft_pthread_mutex_unlock(&philo->info->forks[philo->lfork]);
+		ft_pthread_mutex_unlock(&philo->info->forks[philo->rfork]);
+	}
+	else
+	{
+		ft_pthread_mutex_unlock(&philo->info->forks[philo->rfork]);
+		ft_pthread_mutex_unlock(&philo->info->forks[philo->lfork]);
+	}
 }
 
 void	eat(t_philo *philo)
 {
 	take_forks(philo);
-	philo->die_time = get_time() + philo->info->time_die;
-	print_mutex(philo->info, "is eating", philo->id);
-	ft_usleep(philo->info->time_eat);
-	philo->cnt_eat++;
-	drop_forks(philo);
+	if (philo->info->cnt_philo != 1)
+	{
+		ft_pthread_mutex_lock(&philo->info->monitoring);
+		philo->die_time = get_time() + philo->info->time_die;
+		philo->cnt_eat++;
+		ft_pthread_mutex_unlock(&philo->info->monitoring);
+		print_mutex(philo->info, "is eating", philo->id, 0);
+		ft_usleep(philo->info->time_eat);
+		drop_forks(philo);
+	}
 }
 
 void	sleeping(t_philo *philo)
 {
-	print_mutex(philo->info, "is sleeping", philo->id);
+	print_mutex(philo->info, "is sleeping", philo->id, 0);
 	ft_usleep(philo->info->time_sleep);
 }
