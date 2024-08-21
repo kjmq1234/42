@@ -44,13 +44,12 @@ void    Phonebook::search_contact()
 	std::string input;
 
 	i = 0;
-	for (int j = 40; j > 0; j--)
-		std::cout << "-";
+	std::cout << " ___________________________________________ " << std::endl;
 	std::cout << std::endl;
 	while (i < this->contactCount && i < 8)
 	{
 		std::cout << "|";
-		std::cout << std::setw(10) << i << "|";
+		std::cout << std::setw(10) << (i + 1) << "|";
 
 		std::string firstName = this->contacts[i].get_firstName();
 		if (firstName.length() > 10)
@@ -69,20 +68,22 @@ void    Phonebook::search_contact()
 		
 		i++;
 	}
-	for (int j = 40; j > 0; j--)
-		std::cout << "-";
-	std::cout << std::endl;
+	std::cout << " ___________________________________________ " << std::endl;
 	std::cout << "검색할 index를 입력하세요: ";
 	std::cin >> input;
-	index = std::stoi(input);
-	if (index >= 0 && index < this->contactCount && index < 8)
+	if (std::all_of(input.begin(), input.end(), ::isdigit)) {
+        index = std::stoi(input);
+	if (index >= 1 && index < (this->contactCount + 1) && index <= 8)
 	{
-		std::cout << "이름: " << this->contacts[index].get_firstName() << std::endl;
-		std::cout << "성: " << this->contacts[index].get_lastName() << std::endl;
-		std::cout << "닉네임: " << this->contacts[index].get_nickname() << std::endl;
-		std::cout << "전화번호: " << this->contacts[index].get_phoneNumber() << std::endl;
-		std::cout << "가장 비밀스러운 정보: " << this->contacts[index].get_darkestSecret() << std::endl;
+		std::cout << "이름: " << this->contacts[index - 1].get_firstName() << std::endl;
+		std::cout << "성: " << this->contacts[index - 1].get_lastName() << std::endl;
+		std::cout << "닉네임: " << this->contacts[index - 1].get_nickname() << std::endl;
+		std::cout << "전화번호: " << this->contacts[index - 1].get_phoneNumber() << std::endl;
+		std::cout << "가장 비밀스러운 정보: " << this->contacts[index - 1].get_darkestSecret() << std::endl;
 	}
 	else
 		std::cout << "잘못된 index입니다." << std::endl;
+	}
+	else
+		std::cout << "잘못된 입력입니다. 숫자를 입력하세요." << std::endl;
 }
