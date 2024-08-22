@@ -2,11 +2,11 @@ CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = megaphone.cpp
+SRCS = main.cpp Harl.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-TARGET = megaphone
+TARGET = Harl
 
 all: $(TARGET)
 

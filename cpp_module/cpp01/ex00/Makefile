@@ -2,11 +2,11 @@ CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = megaphone.cpp
+SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-TARGET = megaphone
+TARGET = BraiiiiiiinnnzzzZ
 
 all: $(TARGET)
 

@@ -2,11 +2,11 @@ CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = megaphone.cpp
+SRCS = main.cpp Zombie.cpp ZombieHorde.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-TARGET = megaphone
+TARGET = Moar_brainz!
 
 all: $(TARGET)
 
