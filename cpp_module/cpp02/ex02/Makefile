@@ -6,7 +6,7 @@ SRCS = Fixed.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-TARGET = My_First
+TARGET = Operator
 
 all: $(TARGET)
 
