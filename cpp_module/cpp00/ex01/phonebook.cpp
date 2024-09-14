@@ -19,19 +19,19 @@ void	Phonebook::add_contact()
 	std::string	darkestSecret;
 
 	std::cout << "이름을 입력하세요: ";
-	std::cin >> firstName;
+	std::getline(std::cin, firstName);
 	contact.set_firstName(firstName);
 	std::cout << "성을 입력하세요: ";
-	std::cin >> lastName;
+	std::getline(std::cin, lastName);
 	contact.set_lastName(lastName);
 	std::cout << "닉네임을 입력하세요: ";
-	std::cin >> nickname;
+	std::getline(std::cin, nickname);
 	contact.set_nickname(nickname);
 	std::cout << "전화번호를 입력하세요: ";
-	std::cin >> phoneNumber;
+	std::getline(std::cin, phoneNumber);
 	contact.set_phoneNumber(phoneNumber);
 	std::cout << "가장 비밀스러운 정보를 입력하세요: ";
-	std::cin >> darkestSecret;
+	std::getline(std::cin, darkestSecret);
 	contact.set_darkestSecret(darkestSecret);
 	this->contacts[this->contactCount % 8] = contact;
 	this->contactCount++;
@@ -70,9 +70,9 @@ void    Phonebook::search_contact()
 	}
 	std::cout << " ___________________________________________ " << std::endl;
 	std::cout << "검색할 index를 입력하세요: ";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	if (std::all_of(input.begin(), input.end(), ::isdigit)) {
-        index = std::stoi(input);
+        index = std::atoi(input.c_str());
 	if (index >= 1 && index < (this->contactCount + 1) && index <= 8)
 	{
 		std::cout << "이름: " << this->contacts[index - 1].get_firstName() << std::endl;
