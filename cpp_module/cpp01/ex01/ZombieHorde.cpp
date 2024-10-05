@@ -8,6 +8,7 @@ Zombie*	ZombieHorde(int N, std::string name)
         Zombie*	zombie = new Zombie();
         zombie->setName(name + std::to_string(i + 1));
         zombies[i] = *zombie;
+        delete zombie;
     }
     return (zombies);
 }
