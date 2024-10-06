@@ -9,4 +9,5 @@ int main(void)
 	Animal *animal = new Dog();
 	// Animal *animal = new Animal();
 	animal->makeSound();
+	delete animal;
 }

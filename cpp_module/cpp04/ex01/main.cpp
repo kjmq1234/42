@@ -38,7 +38,7 @@ int main(void)
 	d->getBrain()->setIdea(0, "Some");
 	str = d->getBrain()->getIdea(0);
 	std::cout << "Dog1's first idea is "<< str << std::endl;
-
+	
 	*d2 = *d;
 	str = d2->getBrain()->getIdea(0);
 	std::cout << "Dog2's first idea is "<< str << std::endl;
