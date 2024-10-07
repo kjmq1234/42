@@ -34,6 +34,10 @@ Character & Character::operator=(Character const & src) {
             _inventory[i] = NULL;
         }
     }
+    for (int i = 0; i < 4; i++) {
+        if (src.trashs[i])
+            this->trashs[i] = src.trashs[i];
+    }
 
     this->_name = src._name;
     trashsIndex = src.trashsIndex;

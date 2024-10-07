@@ -6,18 +6,6 @@ Cat::Cat() : Animal("Default Animal")
     std::cout << "Cat default constructor called" << std::endl;
 }
 
-Cat::Cat(std::string type) : Animal("Default Animal")
-{
-    this->type = type;
-    std::cout << "Cat type constructor called" << std::endl;
-}
-
-Cat::Cat(const Cat &cat) : Animal("Default Animal")
-{
-    this->type = cat.type;
-    std::cout << "Cat copy constructor called" << std::endl;
-}
-
 Cat &Cat::operator=(const Cat &cat)
 {
     this->type = cat.type;

@@ -27,10 +27,20 @@ Brain::~Brain()
 
 std::string Brain::getIdea(int index) const
 {
+    if (index < 0 || index >= 100)
+    {
+        std::cout << "Invalid index" << std::endl;
+        return;
+    }
     return this->ideas[index];
 }
 
 void Brain::setIdea(int index, const std::string &idea)
 {
+    if (index < 0 || index >= 100)
+    {
+        std::cout << "Invalid index" << std::endl;
+        return;
+    }
     this->ideas[index] = idea;
 }

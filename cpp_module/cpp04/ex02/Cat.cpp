@@ -7,13 +7,6 @@ Cat::Cat() : Animal("Default Animal")
     std::cout << "Cat default constructor called" << std::endl;
 }
 
-Cat::Cat(std::string type) : Animal("Default Animal")
-{
-    this->brain = new Brain();
-    this->type = type;
-    std::cout << "Cat type constructor called" << std::endl;
-}
-
 Cat::Cat(const Cat &cat) : Animal("Default Animal")
 {
     this->brain = new Brain(*cat.brain);
