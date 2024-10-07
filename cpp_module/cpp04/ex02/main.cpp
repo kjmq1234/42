@@ -7,7 +7,7 @@
 int main(void)
 {
 	Animal *animal = new Dog();
-	// Animal *animal = new Animal();
+	// Animal *animal1 = new Animal();
 	animal->makeSound();
 	delete animal;
 }
