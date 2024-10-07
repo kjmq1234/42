@@ -39,6 +39,8 @@ void MateriaSource::learnMateria(AMateria* m) {
             return;
         }
     }
+    std::cout << "Inventory is full" << std::endl;
+    delete m;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type) {

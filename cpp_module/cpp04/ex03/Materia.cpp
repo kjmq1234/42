@@ -10,6 +10,7 @@ MateriaSource::MateriaSource(MateriaSource const & src) {
     for (int i = 0; i < 4; i++) {
         if (_inventory[i]) {
             delete _inventory[i];
+            _inventory[i] = NULL;
         }
     }
     *this = src;
@@ -18,7 +19,10 @@ MateriaSource::MateriaSource(MateriaSource const & src) {
 MateriaSource & MateriaSource::operator=(MateriaSource const & src) {
     for (int i = 0; i < 4; i++) {
         if (_inventory[i])
+        {
             delete _inventory[i];
+            _inventory[i] = NULL;
+        }
     }
     return *this;
 }
