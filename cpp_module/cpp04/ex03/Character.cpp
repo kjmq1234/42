@@ -34,7 +34,7 @@ Character & Character::operator=(Character const & src) {
             _inventory[i] = NULL;
         }
     }
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < trashsIndex; i++) {
         if (src.trashs[i])
             this->trashs[i] = src.trashs[i];
     }
@@ -66,6 +66,8 @@ void Character::equip(AMateria* m) {
             return;
         }
     }
+    std::cout << "Inventory is full" << std::endl;
+    delete m;
 }
 
 void Character::unequip(int idx) {
@@ -87,5 +89,7 @@ void Character::use(int idx, ICharacter& target) {
     if (idx >= 0 && idx < 4) {
         if (_inventory[idx])
             _inventory[idx]->use(target);
+        else
+            std::cout << "No materia in this slot" << std::endl;
     }
 }
